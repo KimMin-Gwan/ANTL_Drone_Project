@@ -1,9 +1,6 @@
 import asyncio
 from mavsdk import System
-import KeyPressModule as kp
-
-# Initialize KeyPressModule
-kp.init()
+import keyboard  # Import the keyboard module
 
 # Initialize drone
 drone = System()
@@ -12,7 +9,9 @@ drone = System()
 roll, pitch, throttle, yaw = 0, 0, 0.5, 0
 
 async def getKeyboardInput():
-
+    """
+    Get manual keyboard inputs for controlling the drone.
+    """
     global roll, pitch, throttle, yaw
     while True:
         # Reset manual control inputs
@@ -20,27 +19,27 @@ async def getKeyboardInput():
 
         # Check keyboard inputs
         value = 1
-        if kp.getKey("LEFT"):
+        if keyboard.is_pressed("LEFT"):
             pitch = -value
-        elif kp.getKey("RIGHT"):
+        elif keyboard.is_pressed("RIGHT"):
             pitch = value
-        if kp.getKey("UP"):
+        if keyboard.is_pressed("UP"):
             roll = value
-        elif kp.getKey("DOWN"):
+        elif keyboard.is_pressed("DOWN"):
             roll = -value
-        if kp.getKey("w"):
+        if keyboard.is_pressed("w"):
             throttle = value
-        elif kp.getKey("s"):
+        elif keyboard.is_pressed("s"):
             throttle = 0
-        if kp.getKey("a"):
+        if keyboard.is_pressed("a"):
             yaw = -value
-        elif kp.getKey("d"):
+        elif keyboard.is_pressed("d"):
             yaw = value
-        elif kp.getKey("i"):
+        elif keyboard.is_pressed("i"):
             asyncio.ensure_future(print_flight_mode())
-        elif kp.getKey("q") and drone.telemetry.landed_state():
+        elif keyboard.is_pressed("q") and drone.telemetry.landed_state():
             await drone.action.arm()
-        elif kp.getKey("l") and drone.telemetry.in_air():
+        elif keyboard.is_pressed("l") and drone.telemetry.in_air():
             await drone.action.land()
         await asyncio.sleep(0.1)
 
@@ -65,7 +64,7 @@ async def run():
     """
     Main function to connect to the drone and input manual controls.
     """
-    await drone.connect(system_address="serial:///dev/ttyAMA0")
+    await drone.connect(system_address="udp://:14540")
     # This waits until a mavlink-based drone is connected
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
@@ -86,3 +85,4 @@ if __name__ == "__main__":
 
     # Run the event loop until the program is canceled with e.g. CTRL-C
     asyncio.get_event_loop().run_forever()
+
