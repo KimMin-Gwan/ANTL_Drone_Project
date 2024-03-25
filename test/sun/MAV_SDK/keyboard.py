@@ -12,7 +12,6 @@ drone = System()
 roll, pitch, throttle, yaw = 0, 0, 0.5, 0
 
 async def getKeyboardInput():
-    """
     Get manual keyboard inputs for controlling the drone.
     """
     global roll, pitch, throttle, yaw
