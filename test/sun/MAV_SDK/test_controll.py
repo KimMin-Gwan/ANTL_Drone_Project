@@ -9,7 +9,7 @@ async def run():
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
         if state.is_connected:
-            print("Drone discovered with UUID:", state.uuid)
+            print("Drone discovered ")
             break
 
     await drone.action.arm()
@@ -19,15 +19,19 @@ async def run():
 
     # Move the drone forward with a speed of 5 m/s
     await drone.action.set_pitch(0.5)  # Positive value for forward direction
+    print("action pithch 0.5")
     await asyncio.sleep(5)  # Let the drone move forward for 5 seconds
 
     # Stop moving
     await drone.action.set_pitch(0)
 
+    print("action pithch 0")
     await asyncio.sleep(2)  # Pause for 2 seconds
 
     # Move the drone backward with a speed of 5 m/s
     await drone.action.set_pitch(-0.5)  # Negative value for backward direction
+
+    print("action pithch -0.5")
     await asyncio.sleep(5)  # Let the drone move backward for 5 seconds
 
     # Stop moving
