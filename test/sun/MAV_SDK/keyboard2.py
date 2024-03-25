@@ -1,5 +1,10 @@
 import asyncio
+import sys
+import termios
+import tty
 from mavsdk import System
+from mavsdk.offboard import OffboardError
+from mavsdk import OffboardVelocityNedYaw
 
 
 async def manual_control():
@@ -13,40 +18,60 @@ async def manual_control():
             print("Drone discovered.")
             break
 
-    # Start manual control
-    await drone.manual_control.start_position_control()
-
-    # Control loop
+    # Start offboard control
     try:
+        await drone.offboard.start()
+
+        # Control loop
         while True:
             # Read user input
-            command = input("Enter command (WASDQE): ").lower()
+            command = getch()
 
             # Process user input
             if command == "w":
-                await drone.manual_control.set_velocity_ned(0.0, 1.0, 0.0, 0.0)
+                await send_velocity_command(drone, 2.0, 0.0, 0.0, 0.0)
             elif command == "s":
-                await drone.manual_control.set_velocity_ned(0.0, -1.0, 0.0, 0.0)
+                await send_velocity_command(drone, -2.0, 0.0, 0.0, 0.0)
             elif command == "a":
-                await drone.manual_control.set_velocity_ned(-1.0, 0.0, 0.0, 0.0)
+                await send_velocity_command(drone, 0.0, -2.0, 0.0, 0.0)
             elif command == "d":
-                await drone.manual_control.set_velocity_ned(1.0, 0.0, 0.0, 0.0)
+                await send_velocity_command(drone, 0.0, 2.0, 0.0, 0.0)
             elif command == "q":
-                await drone.manual_control.set_velocity_ned(0.0, 0.0, -1.0, 0.0)
+                await send_velocity_command(drone, 0.0, 0.0, -1.0, 0.0)
             elif command == "e":
-                await drone.manual_control.set_velocity_ned(0.0, 0.0, 1.0, 0.0)
+                await send_velocity_command(drone, 0.0, 0.0, 1.0, 0.0)
             elif command == "stop":
                 break
             else:
                 print("Invalid command. Use WASDQE keys.")
 
-    except KeyboardInterrupt:
-        print("KeyboardInterrupt detected.")
+    except OffboardError as error:
+        print(f"Offboard control failed with error code: {error._result}")
 
     finally:
-        # Stop manual control and disconnect
-        await drone.manual_control.stop()
+        # Stop offboard control and disconnect
+        await drone.offboard.stop()
         await drone.disconnect()
+
+
+async def send_velocity_command(drone, velocity_x, velocity_y, velocity_z, yaw):
+    offboard_velocity_ned_yaw = OffboardVelocityNedYaw()
+    offboard_velocity_ned_yaw.velocity_north_m_s = velocity_x
+    offboard_velocity_ned_yaw.velocity_east_m_s = velocity_y
+    offboard_velocity_ned_yaw.velocity_down_m_s = velocity_z
+    offboard_velocity_ned_yaw.yaw_deg = yaw
+    await drone.offboard.set_velocity_ned_yaw(offboard_velocity_ned_yaw)
+
+
+def getch():
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        ch = sys.stdin.read(1)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
 
 
 if __name__ == "__main__":
