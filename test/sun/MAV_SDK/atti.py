@@ -47,19 +47,12 @@ async def run():
 
     print("-- Go up at 70% thrust")
     await drone.offboard.set_attitude(Attitude(0.0, 0.0, 0.0, 0.7))
+    await asyncio.sleep(3)
+    
+    print("-- ? 30 at 60% thrust")
+    await drone.offboard.set_attitude(Attitude(0.0, 30.0, 0.0, 0.6))
     await asyncio.sleep(2)
 
-    print("-- Roll 30 at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(30.0, 0.0, 0.0, 0.6))
-    await asyncio.sleep(2)
-
-    print("-- Roll -30 at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(-30.0, 0.0, 0.0, 0.6))
-    await asyncio.sleep(2)
-
-    print("-- Hover at 60% thrust")
-    await drone.offboard.set_attitude(Attitude(0.0, 0.0, 0.0, 0.6))
-    await asyncio.sleep(2)
 
     print("-- Stopping offboard")
     try:
