@@ -1,5 +1,6 @@
 import cv2
-from constants import WAIT_IMG_PATH
+from main.server.src.model.constants import WAIT_IMG_PATH
+from enum import Enum, auto
 
 class VideoModel():
     def __init__(self):
@@ -21,8 +22,10 @@ class VideoModel():
 class PilotModel():
     def __init__(self):
         self.__key = Key()
-        self.__Pilot_State = False # 코드로 적을것
+        self.__mode = Mode.DEFAULT
+        self.__Pilot_State = False # 용도 불명
 
+    # key 변경
     def set_key(self, x1=-1, y1=-1, x2=-1, y2=-1):
         if x1 != -1:
             self.__key.set_x1(x1)
@@ -33,12 +36,34 @@ class PilotModel():
         if y2 != -1:
             self.__key.set_y2(y2)
 
+    # key 접근
     def get_key(self):
         return self.__key.get_xy()
+    
+    # 모드 추가예정
+    def set_mode(self, mode:int):
+        if mode == 0:
+            self.__mode = Mode.DEFAULT
+        elif mode == 1:
+            self.__mode = Mode.MANUAL
+        elif mode == 2:
+            self.__mode = Mode.AUTO
+        else:
+            self.__mode = Mode.DEFAULT
+    
+    # return data = 0, 1, 2 
+    def get_mode(self)->int:
+        return self.__mode.value
 
+class Mode(Enum):
+    DEFAULT = auto()
+    MANUAL = auto()
+    AUTO = auto()
+
+# 조종기
 class Key():
     def __init__(self):
-        self.__on_off = 0
+        self.__on_off = 0 # 어디다 쓰는지 모름
         self.__x1 = 0
         self.__y1 = 0
         self.__x2 = 0
@@ -61,7 +86,7 @@ class Key():
         return
 
     def get_xy(self):
-        return self.__x1, self.__x2, self.__y1, self.__y2
+        return self.__x1, self.__y1, self.__x2, self.__y2
         
         
 
