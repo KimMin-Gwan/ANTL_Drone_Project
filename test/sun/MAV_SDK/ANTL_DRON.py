@@ -72,12 +72,8 @@ class ANTL_DRONE:
                 break
             print("your input is ")
             print(a,b,c,d)
-            try:
-                print("조종 들어갑니다.")
-                await self.get_stick_value(a,b,c,d) 
-            except:
-                print("실패")
-                await self.stop_offboard_mode()
+            print("조종 들어갑니다.")
+            await self.get_stick_value(a,b,c,d) 
         await self.stop_offboard_mode() 
     async def get_stick_value(self,throtle, yaw, pitch,roll):
         #0~100 throtle 은 0.0~1.0 사이로 넣는 느낌으로 
