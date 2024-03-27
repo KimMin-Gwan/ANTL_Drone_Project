@@ -53,7 +53,8 @@ async def run():
     await drone.offboard.set_attitude(Attitude(0.0, 30.0, 0.0, 0.6))
     await asyncio.sleep(2)
 
-
+async def control():
+    
     print("-- Stopping offboard")
     try:
         await drone.offboard.stop()
