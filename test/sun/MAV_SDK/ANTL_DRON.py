@@ -79,7 +79,7 @@ class ANTL_DRONE:
         #0~100 throtle 은 0.0~1.0 사이로 넣는 느낌으로 
         print("조종 시작 ")
         await self.drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
-        await asyncio.sleep(0.1)
+        await asyncio.sleep(1)
         
 # 실행 예제
 if __name__ == "__main__":
