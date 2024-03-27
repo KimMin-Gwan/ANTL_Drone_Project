@@ -73,9 +73,11 @@ class ANTL_DRONE:
             (a, b, c, d) = map(int, input("스로틀 , YAW , PITCH , ROLL ").split())
             print("your input is ")
             print(a,b,c,d)
-            await self.get_stick_value(a,b,c,d) 
+            try:
+                await self.get_stick_value(a,b,c,d) 
+            except:
+                await self.stop_offboard_mode()
             
-        await self.stop_offboard_mode()
     async def get_stick_value(self,throtle, yaw, pitch,roll):
         #0~100 throtle 은 0.0~1.0 사이로 넣는 느낌으로 
         await self.drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
