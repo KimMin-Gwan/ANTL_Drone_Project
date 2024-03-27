@@ -37,6 +37,7 @@ class ANTL_DRONE:
         print("-- Starting offboard")
         try:
             await self.drone.offboard.start()
+            print("start_offboard_function")
         except OffboardError as error:
             print(f"Starting offboard mode failed with error code: \
                   {error._result.result}")
