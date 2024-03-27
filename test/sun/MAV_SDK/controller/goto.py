@@ -40,10 +40,9 @@ async def run():
         return
     while True:
             (throtle, yaw, pitch, roll) = map(float, input("스로틀 , YAW , PITCH , ROLL ").split())
-            if(a==-1):
+            if(throtle==-1):
                 break
             print("your input is ")
-            print(a,b,c,d)
             print("조종 들어갑니다.")
             await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
             await asyncio.sleep(2)
