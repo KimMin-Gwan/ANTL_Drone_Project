@@ -4,7 +4,7 @@ from mavsdk import System
 async def print_rc_input():
     # 시스템에 연결
     drone = System()
-    await drone.connect(system_address="udp://:14540")
+    await drone.connect(system_address="serial:///dev/ttyAMA0")
 
     # RC 입력 구독 시작
     async for rc_input in drone.telemetry.rc_status():
