@@ -3,7 +3,7 @@ import time
 import os
 
 spi = spidev.SpiDev()     
-spi.open(0,0)
+spi.open(1,0)
 spi.max_speed_hz=1000000   
 
 def ReadChannel(channel):           
