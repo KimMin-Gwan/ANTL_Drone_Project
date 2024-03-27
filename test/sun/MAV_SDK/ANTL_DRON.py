@@ -1,6 +1,8 @@
 
 import asyncio
-from mavsdk import System, OffboardError, Attitude
+
+from mavsdk import System
+from mavsdk.offboard import (Attitude, OffboardError)
 
 
 class ANTL_DRONE:
