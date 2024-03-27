@@ -1,6 +1,6 @@
 import asyncio
-from mavsdk import System, OffboardError
-
+from mavsdk import System
+from mavsdk.offboard import (Attitude, OffboardError)
 async def connect_to_drone():
     drone = System()
     await drone.connect(system_address="udp://:14540")
