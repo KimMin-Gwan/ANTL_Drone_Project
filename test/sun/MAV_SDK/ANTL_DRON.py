@@ -73,7 +73,7 @@ class ANTL_DRONE:
             print("your input is ")
             print(a,b,c,d)
             print("조종 들어갑니다.")
-            self.get_stick_value(a,b,c,d) 
+            await self.get_stick_value(a,b,c,d) 
     async def get_stick_value(self,throtle, yaw, pitch,roll):
         #0~100 throtle 은 0.0~1.0 사이로 넣는 느낌으로 
         print("조종 시작 ")
