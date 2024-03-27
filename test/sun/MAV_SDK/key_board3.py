@@ -13,26 +13,33 @@ async def getKeyboardInput(my_drone):
     global roll, pitch, throttle, yaw
     while True:
         # 키보드 입력 처리
-        if keyboard.is_pressed('w'):
-            throttle = 1
-        elif keyboard.is_pressed('s'):
-            throttle = 0
-        elif keyboard.is_pressed('a'):
-            yaw = -1
-        elif keyboard.is_pressed('d'):
-            yaw = 1
-        elif keyboard.is_pressed('UP'):
-            roll = 1
-        elif keyboard.is_pressed('DOWN'):
-            roll = -1
-        elif keyboard.is_pressed('LEFT'):
-            pitch = -1
-        elif keyboard.is_pressed('RIGHT'):
-            pitch = 1
-        elif keyboard.is_pressed('q') and my_drone.telemetry.landed_state():
-            await my_drone.action.arm()
-        elif keyboard.is_pressed('l') and my_drone.telemetry.in_air():
-            await my_drone.action.land()
+        for event in keyboard.read_event():
+            if event.event_type == keyboard.KEY_DOWN:
+                if event.name == 'w':
+                    throttle = 1
+                elif event.name == 's':
+                    throttle = 0
+                elif event.name == 'a':
+                    yaw = -1
+                elif event.name == 'd':
+                    yaw = 1
+                elif event.name == 'up':
+                    roll = 1
+                elif event.name == 'down':
+                    roll = -1
+                elif event.name == 'left':
+                    pitch = -1
+                elif event.name == 'right':
+                    pitch = 1
+            elif event.event_type == keyboard.KEY_UP:
+                if event.name in ['w', 's']:
+                    throttle = 0
+                elif event.name in ['a', 'd']:
+                    yaw = 0
+                elif event.name in ['up', 'down']:
+                    roll = 0
+                elif event.name in ['left', 'right']:
+                    pitch = 0
 
         # 키 입력에 따른 드론 상태 출력
         print(roll, pitch, throttle, yaw)
