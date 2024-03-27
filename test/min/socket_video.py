@@ -56,6 +56,7 @@ while True:
 
 
 
+
 # 필요한 패키지 import
 import cv2 # OpenCV(실시간 이미지 프로세싱) 모듈
 import socket # 소켓 프로그래밍에 필요한 API를 제공하는 모듈

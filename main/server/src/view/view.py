@@ -11,8 +11,9 @@ from main.server.src.controller.client_handler import ClientController
 from main.server.src.view.data_parser import Parser
 
 # APP
+# ASGI 를 활성화하려면 매게변수로 client를 받아보든가
 class APP_View():
-    def __init__(self, client):
+    def __init__(self):
         self.rt_app = RealTimeAPI()
         self.app = FastAPI()
         self.client = ClientController()
@@ -33,7 +34,7 @@ class APP_View():
             return StreamingResponse(vc.get_frame(), media_type="multipart/x-mixed-replace;boundary=frame")
 
         # 드론한테 video 받기
-        @self.rt_app.post("/video_feed")
+        @self.rt_app.post("/video_recv")
         def video_getter(frame):
             vc = self.client.get_video_controller()
             vc.recv_video(frame)
