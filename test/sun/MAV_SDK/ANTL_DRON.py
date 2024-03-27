@@ -70,7 +70,9 @@ class ANTL_DRONE:
             a,b,c,d=int(input(input("input 스로틀 , YAW, PITCH, ROLL")))
             if(a==-1):
                 break
-            a, b, c, d = map(int, input("스로틀 , YAW , PITCH , ROLL ").split())
+            (a, b, c, d) = map(int, input("스로틀 , YAW , PITCH , ROLL ").split())
+            print("your input is ")
+            print(a,b,c,d)
             await self.get_stick_value(a,b,c,d) 
             
         await self.stop_offboard_mode()
