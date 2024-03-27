@@ -17,7 +17,7 @@ swt_channel = 0
 vrx_channel = 1  
 vry_channel = 2  
 
-delay = 0.5  
+delay = 0.1  
 
 while True:
 
