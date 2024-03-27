@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 
+
 import asyncio
+
 from mavsdk import System
+from mavsdk.offboard import (Attitude, OffboardError)
+
 
 
 async def run():
+    """ Does Offboard control using velocity NED coordinates. """
+
     drone = System()
     await drone.connect(system_address="udp://:14540")
 
@@ -17,29 +23,44 @@ async def run():
     print("Waiting for drone to have a global position estimate...")
     async for health in drone.telemetry.health():
         if health.is_global_position_ok and health.is_home_position_ok:
-            print("-- Global position state is good enough for flying.")
+            print("-- Global position estimate OK")
             break
-
-    print("Fetching amsl altitude at home location....")
-    async for terrain_info in drone.telemetry.home():
-        absolute_altitude = terrain_info.absolute_altitude_m
-        break
 
     print("-- Arming")
     await drone.action.arm()
 
-    print("-- Taking off")
-    await drone.action.takeoff()
+    print("-- Setting initial setpoint")
+    await drone.offboard.set_velocity_ned(VelocityNedYaw(0.0, 0.0, 0.0, 0.0))
 
-    await asyncio.sleep(1)
-    # To fly drone 20m above the ground plane
-    flying_alt = absolute_altitude + 20.0
-    # goto_location() takes Absolute MSL altitude
-    await drone.action.goto_location(47.397606, 8.543060, flying_alt, 0)
+    print("-- Starting offboard")
+    try:
+        await drone.offboard.start()
+    except OffboardError as error:
+        print(f"Starting offboard mode failed with error code: \
+              {error._result.result}")
+        print("-- Disarming")
+        await drone.action.disarm()
+        return
 
+    print("-- Go up 2 m/s")
+    await drone.offboard.set_velocity_ned(VelocityNedYaw(0.0, 0.0, -2.0, 0.0))
+    await asyncio.sleep(4)
+
+        
     while True:
-        print("Staying connected, press Ctrl-C to exit")
-        await asyncio.sleep(1)
+            (throtle, yaw, pitch, roll) = map(float, input("스로틀 , YAW , PITCH , ROLL ").split())
+            if(a==-1):
+                break
+            print("your input is ")
+            print(a,b,c,d)
+            print("조종 들어갑니다.")
+            await self.drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
+    print("-- Stopping offboard")
+    try:
+        await drone.offboard.stop()
+    except OffboardError as error:
+        print(f"Stopping offboard mode failed with error code: \
+              {error._result.result}")
 
 
 if __name__ == "__main__":
