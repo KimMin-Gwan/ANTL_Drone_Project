@@ -78,7 +78,7 @@ class ANTL_DRONE:
             except:
                 print("실패")
                 await self.stop_offboard_mode()
-            await self.stop_offboard_mode() 
+        await self.stop_offboard_mode() 
     async def get_stick_value(self,throtle, yaw, pitch,roll):
         #0~100 throtle 은 0.0~1.0 사이로 넣는 느낌으로 
         print("조종 시작 ")
