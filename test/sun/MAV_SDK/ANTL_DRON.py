@@ -67,10 +67,9 @@ class ANTL_DRONE:
         await self.set_initial_setpoint()
         await self.start_offboard_mode()
         while True:
-            a,b,c,d=int(input(input("input 스로틀 , YAW, PITCH, ROLL")))
+            (a, b, c, d) = map(float, input("스로틀 , YAW , PITCH , ROLL ").split())
             if(a==-1):
                 break
-            (a, b, c, d) = map(int, input("스로틀 , YAW , PITCH , ROLL ").split())
             print("your input is ")
             print(a,b,c,d)
             try:
