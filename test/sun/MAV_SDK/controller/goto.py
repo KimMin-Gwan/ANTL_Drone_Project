@@ -106,7 +106,7 @@ async def run():
             print("your input is ")
             print(a,b,c,d)
             print("조종 들어갑니다.")
-            await self.drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
+            await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
             await asyncio.sleep(2)
             
         
