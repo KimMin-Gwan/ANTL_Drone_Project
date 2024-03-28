@@ -2,8 +2,8 @@
 import asyncio
 import socket
 
-HOST='192.168.232.134'
-
+#HOST='192.168.232.134' #컴퓨터 시뮬
+HOST='192.168.50.232'  #rap to rap
 from mavsdk import System
 from mavsdk.offboard import (Attitude, OffboardError)
 #HOST='10.10.88.97'
