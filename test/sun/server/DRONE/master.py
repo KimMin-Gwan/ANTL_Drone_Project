@@ -17,7 +17,7 @@ while True:
     data,addr=sock.recvfrom(1024)
     my_data=(data.decode().split(":"))
     roll=float(my_data[0])
-    throttle=float(my_data[1])
+    throttle=float(my_data[1])/1500.0
     yaw=float(my_data[2])
     pitch=float(my_data[3])
 # 추출된 숫자를 범위 내에 조정하여 변수에 저장합니다.
