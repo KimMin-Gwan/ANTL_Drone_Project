@@ -64,7 +64,7 @@ async def run():
         yaw=yaw/10
         pitch=pitch/10
         print(roll,throttle,yaw,pitch)
-        await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throttle))
+        await drone.offboard.set_attitude(Attitude(yaw, pitch, roll, throttle))
         await asyncio.sleep(0.01)
             
         
