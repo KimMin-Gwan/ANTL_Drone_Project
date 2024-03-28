@@ -1,8 +1,17 @@
 
 import asyncio
+import socket
+
+HOST='192.168.232.134'
 
 from mavsdk import System
 from mavsdk.offboard import (Attitude, OffboardError)
+#HOST='10.10.88.97'
+PORT =65433
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+sock.bind((HOST,PORT))
+
 
 
 async def run():
@@ -39,13 +48,15 @@ async def run():
         await drone.action.disarm()
         return
     while True:
-            (throtle, yaw, pitch, roll) = map(float, input("스로틀 , YAW , PITCH , ROLL ").split())
-            if(throtle==-1):
-                break
-            print("your input is ")
-            print("조종 들어갑니다.")
-            await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throtle))
-            await asyncio.sleep(2)
+        data,addr=sock.recvfrom(1024)
+        my_data=(data.decode().split(":"))
+        roll=float(my_data[0])
+        throttle=float(my_data[1])
+        yaw=float(my_data[2])
+        pitch=float(my_data[3])
+        print(roll,throttle,yaw,pitch)
+        await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throttle))
+        await asyncio.sleep(0.01)
             
         
     print("-- Stopping offboard")
