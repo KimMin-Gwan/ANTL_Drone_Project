@@ -22,9 +22,6 @@ sock_2=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 while True:
     data,addr=sock.recvfrom(1024)
-    str_2=data.decode()+"\n"
-    if(len(str_2)!=21):
-        print("h\n")
     sock_2.sendto(data,(HOST_2,PORT_2))
 
 
