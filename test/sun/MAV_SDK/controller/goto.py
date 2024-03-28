@@ -19,7 +19,7 @@ async def run():
 
     drone = System()
     #await drone.connect(system_address="udp://:14540")
-    await drone.connect(System_address="serial:///dev/ttyAMA0")
+    await drone.connect(system_address="serial:///dev/ttyAMA0")
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
         if state.is_connected:
