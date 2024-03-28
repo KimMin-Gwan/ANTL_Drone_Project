@@ -1,6 +1,6 @@
 import socket
 import time
-
+import sys
 
 # A로부터 데이터를 받습니다.
 
@@ -22,9 +22,10 @@ sock_2=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 while True:
     data,addr=sock.recvfrom(1024)
-    print("수신한 데이터",data.decode(),'from',addr)
+    str_2=data.decode()+"\n"
+    if(len(str_2)!=21):
+        print("h\n")
     sock_2.sendto(data,(HOST_2,PORT_2))
-    time.sleep(0.1)
 
 
 
