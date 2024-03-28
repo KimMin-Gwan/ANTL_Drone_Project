@@ -50,10 +50,10 @@ async def run():
     while True:
         data,addr=sock.recvfrom(1024)
         my_data=(data.decode().split(":"))
-        roll=float(my_data[0])
-        throttle=float(my_data[1])
-        yaw=float(my_data[2])
-        pitch=float(my_data[3])
+        roll=float(my_data[0])-500
+        throttle=float(my_data[1])/1200
+        yaw=float(my_data[2])-500
+        pitch=float(my_data[3])-500
         print(roll,throttle,yaw,pitch)
         await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throttle))
         await asyncio.sleep(0.01)
