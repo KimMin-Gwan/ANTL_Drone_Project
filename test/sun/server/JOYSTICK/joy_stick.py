@@ -41,11 +41,11 @@ delay = 0.1
 while True:
 
   vrx_pos = ReadChannel(vrx_channel)  
-  vry_pos = ReadChannel(vry_channel) 
+  vry_pos =abs (ReadChannel(vry_channel)-1022)
   swt_val = ReadChannel(swt_channel)  
 
   vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
-  vry_pos_2 = ReadChannel_2(vry_channel_2) 
+  vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1022)
   swt_val_2 = ReadChannel_2(swt_channel_2)  
   msg=f"Y:{vrx_pos}T:{vry_pos}P:{vrx_pos_2}R:{vry_pos_2}"
   sock.sendto(msg.encode(),(HOST,PORT))
