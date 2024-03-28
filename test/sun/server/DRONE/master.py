@@ -4,7 +4,7 @@
 
 import socket
 
-HOST='165.229.185.195'
+HOST='192.168.232.134'
 PORT =65432
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
