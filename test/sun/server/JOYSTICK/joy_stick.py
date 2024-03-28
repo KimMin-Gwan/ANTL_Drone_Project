@@ -25,7 +25,7 @@ def ReadChannel(channel):
 
 
 # 서버 주소와 포트
-HOST = '192.168.232.134'
+HOST = '165.229.185.195'
 PORT = 65432
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 swt_channel = 0  
