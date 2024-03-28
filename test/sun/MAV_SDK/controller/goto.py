@@ -54,6 +54,12 @@ async def run():
         throttle=float(my_data[1])/1200
         yaw=float(my_data[2])-500
         pitch=float(my_data[3])-500
+        if(roll>1 and roll< 10):
+            roll=0
+        if(pitch>1 and pitch <8):
+            pitch=0
+        if(yaw>20 and yaw < 30):
+            yaw=0
         print(roll,throttle,yaw,pitch)
         await drone.offboard.set_attitude(Attitude(pitch, yaw, roll, throttle))
         await asyncio.sleep(0.01)
