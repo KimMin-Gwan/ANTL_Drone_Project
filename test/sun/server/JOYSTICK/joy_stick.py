@@ -25,11 +25,11 @@ def ReadChannel(channel):
 
 
 # 서버 주소와 포트
-#HOST='192.168.50.71' #컴퓨터 시라파이션
-#PORT = 65432
+HOST='192.168.50.71' #컴퓨터 시라파이션
+PORT = 65432
 
-HOST='192.168.50.232'  #라파 투 라파
-PORT=65433
+#HOST='192.168.50.232'  #라파 투 라파
+#PORT=65433
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 swt_channel = 0  
 vrx_channel = 1  

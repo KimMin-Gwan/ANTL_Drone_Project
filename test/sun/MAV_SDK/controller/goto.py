@@ -2,8 +2,8 @@
 import asyncio
 import socket
 
-#HOST='192.168.232.134' #컴퓨터 시뮬
-HOST='192.168.50.232'  #rap to rap
+HOST='192.168.232.134' #컴퓨터 시뮬
+#HOST='192.168.50.232'  #rap to rap
 from mavsdk import System
 from mavsdk.offboard import (Attitude, OffboardError)
 #HOST='10.10.88.97'
@@ -18,8 +18,8 @@ async def run():
     """ Does Offboard control using attitude commands. """
 
     drone = System()
-    #await drone.connect(system_address="udp://:14540")
-    await drone.connect(system_address="serial:///dev/ttyAMA0")
+    await drone.connect(system_address="udp://:14540")
+    #await drone.connect(system_address="serial:///dev/ttyAMA0")
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
         if state.is_connected:
