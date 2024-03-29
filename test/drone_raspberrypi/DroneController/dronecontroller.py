@@ -38,7 +38,7 @@ class controller():
     def start_async_controll_drone(self):
         loop=asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        loop.run_until_complete(self.controll_dron)
+        loop.run_until_complete(self.controll_dron())
         loop.close()
         
         
