@@ -6,6 +6,8 @@ class camera():
 
     def send_FPV(self):
         while True:
-           self.sock.sendto(self.camera_data.encode(),(ANTL_HOST,ANTL_PORT))
+           #self.sock.sendto(self.camera_data.encode(),(ANTL_HOST,ANTL_PORT))
+           print("asdf")
+
     
         
