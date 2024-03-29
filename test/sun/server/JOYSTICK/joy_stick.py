@@ -88,6 +88,8 @@ while True:
   vry_pos_2=float(((vry_pos_2-500)/1000)*degree*2)
   
   msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
+  
+  print(msg)
   sock.sendto(msg.encode(),(HOST,PORT))
   time.sleep(delay)
   
