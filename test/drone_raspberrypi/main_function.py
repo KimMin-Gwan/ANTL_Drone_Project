@@ -22,9 +22,8 @@ class Main_Function():
     async def create_drone_instance(self):
         self.drone=Drone.drone()
         await self.drone.make_drone()
-        print("make end drone")
+        print(type(self.drone))
         self.drone_controller=DroneController.controller(self.drone,self.Rx_socket)
-        print("send dorne") 
         
     async def start_system(self):
         print("SYSTEM ALARM::System start")
