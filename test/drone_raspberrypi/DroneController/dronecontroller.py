@@ -14,8 +14,9 @@ class controller():
         self.throttle=None
         self.pitch=None
         self.yaw=None
-        self.mode_type=None        
+        self.mode_type=None       
         self.manual_drone=manual(drone)
+        print("make Manul")
         
     async def controll_dron(self):  #thread로 동작해야할 함수 
         #### Yaw Pitch Roll Throttle mode를 계속해서 받아서 mode에 따라서 드론 조종방식을 계속해서 바꾸어준다.
