@@ -7,7 +7,7 @@ class manual():
     def __init__(self,drone) -> None:
 
         self.antl_drone=drone  #main에서 drone객체 받아와서 조종 해야지
-    
+        print("get_drone") 
     
     
     async def manul_controls(self,pitch,yaw,throttle,roll):
