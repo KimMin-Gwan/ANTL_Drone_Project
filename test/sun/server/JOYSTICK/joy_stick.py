@@ -70,7 +70,7 @@ while True:
     vrx_pos_2=500
   elif (vrx_pos_2>=0 and vrx_pos_2 < 3):
     vrx_pos_2=0
-  elif (vrx_pos_2<=1017 and vrx_pos_2>=1026):
+  elif (vrx_pos_2>=1017 and vrx_pos_2<=1026):
     vrx_pos_2=1000
   
   
