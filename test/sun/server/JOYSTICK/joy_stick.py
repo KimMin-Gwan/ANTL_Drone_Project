@@ -50,6 +50,7 @@ while True:
   vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
   vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1023)
   #swt_val_2 = ReadChannel_2(swt_channel_2)  
+  print(vry_pos)
   if(vrx_pos>=500 and vrx_pos<=510):
     vrx_pos=500
   elif(vrx_pos>=0 and vrx_pos < 3):
