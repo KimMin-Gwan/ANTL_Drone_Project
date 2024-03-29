@@ -7,14 +7,16 @@ import DroneController
 from threading import Thread
 import asyncio
 class Main_Function():
-    def __init__(self) -> None:
+    async def __init__(self) -> None:
         print("SYSTEM ALAM :: DRONE FUNCTION ON")
         self.Rx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.Rx_socket.bind((Information.VMWARE_HOST,Information.VMWARE_PORT))  #받는거니까 내가 server로 여는거고
         self.Tx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.loop=asyncio.get_event_loop()
         self.drone=None
-        self.loop.run_until_complete(self.create_drone_instance())
+        
+        
+        await self.loop.run_until_complete(self.create_drone_instance())
         
         self.drone_controller=DroneController.controller(self.drone,self.Rx_socket)
         self.camera=Camera.camera(self.Tx_socket) 
