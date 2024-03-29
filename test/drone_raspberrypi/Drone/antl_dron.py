@@ -5,9 +5,9 @@ from mavsdk import System
 from Information.constant import *
 
 class drone():
-    async def __init__(self) -> None:
+    def __init__(self) -> None:
         self.drone=System()
-        
+    async def make_drone(self):
         await self.drone.connect(system_address=VMWARE_SYSTEM_ADDRESS)
         
         print("Wating for drone to connect...")  #drone connect 
