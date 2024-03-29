@@ -35,7 +35,11 @@ class controller():
                 manual.manul_controls(self.pitch,self.yaw,self.throttle,self.roll)
             elif(self.mode_type=="det"):  #detection mode 조종
                 pass
-            
+    def start_async_controll_drone(self):
+        loop=asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(self.controll_dron)
+        loop.close()
         
         
     
