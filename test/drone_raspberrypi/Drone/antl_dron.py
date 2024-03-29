@@ -26,7 +26,7 @@ class drone():
     
     async def TakingOff(self):
         print("-- Taking off")
-        await drone.action.takeoff()
+        await self.drone.action.takeoff()
         await asyncio.sleep(2)
     
     def get_drone(self):
