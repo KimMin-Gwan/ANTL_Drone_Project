@@ -29,6 +29,7 @@ class Main_Function():
         print("SYSTEM ALARM::System start")
         camera_thread=Thread(target=self.camera.send_FPV)
         camera_thread.start()
+        print("====")
         loop=asyncio.get_event_loop()
         loop.call_soon_threadsafe(loop.create_task,self.drone_controller.controll_dron())
         
