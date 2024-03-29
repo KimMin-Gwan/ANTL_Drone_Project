@@ -50,21 +50,21 @@ while True:
   vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
   vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1023)
   #swt_val_2 = ReadChannel_2(swt_channel_2)  
+  
   if(vrx_pos>=500 and vrx_pos<=510):
     vrx_pos=500
   elif(vrx_pos>=0 and vrx_pos < 3):
     vrx_pos=0
   elif(vrx_pos>=1015 and vrx_pos <=1025):
     vrx_pos=1000
-
-  if(vry_pos>=498 and vry_pos<=510):
+  
+  if(vry_pos>=495 and vry_pos<=515):
     vrx_pos=500
   elif(vry_pos>=0 and vry_pos < 3):
     vry_pos=0
   elif(vry_pos>=1017 and vry_pos <=1027):
     vry_pos=1000
-  print(vrx_pos_2,"   ",vry_pos_2)
-  if(vrx_pos_2>=517 and vrx_pos_2 <=528):
+  if(vrx_pos_2>=525 and vrx_pos_2 <=540):
     vrx_pos_2=500
   elif (vrx_pos_2>=0 and vrx_pos_2 < 3):
     vrx_pos_2=0
@@ -72,7 +72,7 @@ while True:
     vrx_pos_2=1000
   
   
-  if(vry_pos_2>=512 and vry_pos_2<=522):
+  if(vry_pos_2>=495 and vry_pos_2<=505):
     vry_pos_2=500
   elif (vry_pos_2>=0 and vry_pos_2<=5):
     vry_pos_2=0
