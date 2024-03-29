@@ -55,14 +55,14 @@ while True:
     vrx_pos=500
   elif(vrx_pos>=0 and vrx_pos < 3):
     vrx_pos=0
-  elif(vrx_pos>=1015 and vrx_pos <=1025):
+  elif(vrx_pos>=1000 and vrx_pos <=1030):
     vrx_pos=1000
   
   if(vry_pos>=495 and vry_pos<=510):
     vry_pos=500
   elif(vry_pos>=0 and vry_pos < 3):
     vry_pos=0
-  elif(vry_pos>=1017 and vry_pos <=1027):
+  elif(vry_pos>=1000 and vry_pos <=1035):
     vry_pos=1000
     
     
@@ -70,7 +70,7 @@ while True:
     vrx_pos_2=500
   elif (vrx_pos_2>=0 and vrx_pos_2 < 3):
     vrx_pos_2=0
-  elif (vrx_pos_2>=1017 and vrx_pos_2<=1026):
+  elif (vrx_pos_2>=1000 and vrx_pos_2<=1030):
     vrx_pos_2=1000
   
   
@@ -78,7 +78,7 @@ while True:
     vry_pos_2=500
   elif (vry_pos_2>=0 and vry_pos_2<=5):
     vry_pos_2=0
-  elif (vry_pos_2>=1017 and vry_pos_2<=1028):
+  elif (vry_pos_2>=1000 and vry_pos_2<=1030):
     vry_pos_2=1000
     
   #vrx_pos => yaw   vry_pos => Throthle       vrx_pos_2 => ROLL vry_pos_2 => pitch
