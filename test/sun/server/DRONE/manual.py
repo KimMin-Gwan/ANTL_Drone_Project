@@ -79,20 +79,6 @@ async def manual_controls():
     # await drone.manual_control.start_position_control()
 
     while True:
-        # grabs a random input from the test list
-        # WARNING - your simulation vehicle may crash if its unlucky enough
-        # input_index = random.randint(0, len(manual_inputs) - 1)
-        # input_list = manual_inputs[input_index]
-
-        # # get current state of roll axis (between -1 and 1)
-        # roll = float(input_list[0])
-        # # get current state of pitch axis (between -1 and 1)
-        # pitch = float(input_list[1])
-        # # get current state of throttle axis
-        # # (between -1 and 1, but between 0 and 1 is expected)
-        # throttle = float(input_list[2])
-        # # get current state of yaw axis (between -1 and 1)
-        # yaw = float(input_list[3])
         data,addr=sock.recvfrom(1024)
         my_data=(data.decode().split(":"))
         roll=(float(my_data[0]))

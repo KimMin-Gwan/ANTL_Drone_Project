@@ -97,7 +97,7 @@ while True:
   vrx_pos_2=float(((vrx_pos_2-500)/500))
 
   vry_pos_2=float(((vry_pos_2-500)/500))
-  msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
+  msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}:man"
 
   print(msg)
   sock.sendto(msg.encode(),(HOST,PORT))
