@@ -9,7 +9,7 @@ class Main_Function():
     def __init__(self) -> None:
         print("SYSTEM ALAM :: DRONE FUNCTION ON")
         self.Rx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        self.Rx_socket.bind((Information.ANTL_HOST,Information.ANTL_PORT))  #받는거니까 내가 server로 여는거고
+        self.Rx_socket.bind((Information.VMWARE_HOST,Information.VMWARE_PORT))  #받는거니까 내가 server로 여는거고
         self.Tx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.drone_controller=DroneController.controller(self.Rx_socket)
         self.camera=Camera.camera(self.Tx_socket) 
