@@ -14,7 +14,7 @@ class Main_Function():
         self.Tx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.loop=asyncio.get_event_loop()
         self.drone=None
-        self.loop.run_until_complete(self.create_drone_instance())
+  
         
         self.drone_controller=DroneController.controller(self.drone,self.Rx_socket)
         self.camera=Camera.camera(self.Tx_socket) 
@@ -34,6 +34,7 @@ class Main_Function():
         
 async def main():
     main_name=Main_Function()
+    await main_name.create_drone_instance()
     await main_name.start_system()
 if __name__=="__main__":  #Test용 main
     asyncio.run(main())
