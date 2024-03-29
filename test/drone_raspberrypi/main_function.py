@@ -21,7 +21,7 @@ class Main_Function():
         print("SYSTEM ALARM::Initializing Successfully Finished")
    
     async def create_drone_instance(self):
-        self.drone=await Drone().drone()
+        self.drone=await Drone.drone()
     async def start_system(self):
         print("SYSTEM ALARM::System start")
         camera_thread=Thread(target=self.camera.send_FPV)
