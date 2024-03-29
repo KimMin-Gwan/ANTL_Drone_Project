@@ -41,22 +41,22 @@ while True:
   vry_pos_2 = ReadChannel_2(vry_channel_2) 
   swt_val_2 = ReadChannel_2(swt_channel_2)  
 
-  # if(vrx_pos>=0 and vrx_pos<3) :
-  #   vrx_pos=0
-  # if(vrx_pos>=1000):
-  #   vrx_pos=1000
-  # if(vrx_pos>=498 and vrx_pos <=510)  :
-  #   vrx_pos=500
-  # if(vry_pos>=0 and vry_pos<3) :
-  #   vry_pos=0
-  # if(vry_pos>=1000):
-  #   vry_pos=1000
-  # if(vry_pos>=500 and vry_pos<=521):
-  #   vry_pos=500
-  # vrx_pos=(vrx_pos-500)/1000
-  # vry_pos=(vry_pos-500)/1000
-  # vrx_pos= vrx_pos*60
-  # vry_pos=vry_pos*60
+  if(vrx_pos>=0 and vrx_pos<3) :
+    vrx_pos=0
+  if(vrx_pos>=1000):
+    vrx_pos=1000
+  if(vrx_pos>=498 and vrx_pos <=510)  :
+    vrx_pos=500
+  if(vry_pos>=0 and vry_pos<3) :
+    vry_pos=0
+  if(vry_pos>=1000):
+    vry_pos=1000
+  if(vry_pos>=500 and vry_pos<=521):
+    vry_pos=500
+  vrx_pos=(vrx_pos-500)/1000
+  vry_pos=(vry_pos-500)/1000
+  vrx_pos= vrx_pos*15
+  vry_pos=vry_pos*15
   
   print("first    X : {}  Y : {}  Switch : {}".format(vrx_pos,vry_pos,swt_val)) 
   #print("second   X : {}  Y : {}  Switch : {}".format(vrx_pos_2,vry_pos_2,swt_val_2)) 
