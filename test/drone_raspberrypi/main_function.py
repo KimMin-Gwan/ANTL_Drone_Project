@@ -23,15 +23,17 @@ class Main_Function():
     async def create_drone_instance(self):
         self.drone=Drone.drone()
         await self.drone.make_drone()
+        
+        
     async def start_system(self):
         print("SYSTEM ALARM::System start")
         camera_thread=Thread(target=self.camera.send_FPV)
         camera_thread.start()
-        drone_thread=Thread(target=self.drone_controller.controll_dron) 
-        drone_thread.start()
+        loop=asyncio.get_event_loop()
+        loop.call_soon_threadsafe(loop.create_task,self.drone_controller.controll_dron())
         
 
-if __name__=="__main__":
+if __name__=="__main__":  #Test용 main
     main_name=Main_Function()
     print("strat_system")
     main_name.start_system()
