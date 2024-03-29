@@ -32,7 +32,7 @@ class controller():
                 pass
             elif(self.mode_type=="man"): #manual_mode 조종
                 print(self.throttle)
-                self.manual_drone.manul_controls(self.pitch, self.yaw, self.throttle, self.roll)
+                await self.manual_drone.manul_controls(self.pitch, self.yaw, self.throttle, self.roll)
             elif(self.mode_type=="det"):  #detection mode 조종
                 pass
     def start_async_controll_drone(self):
