@@ -1,4 +1,5 @@
 from Information import *
+import time
 class camera():
     def __init__(self,camera_sock) -> None:
         self.camera_data="adsf\n"
@@ -8,6 +9,7 @@ class camera():
         while True:
            #self.sock.sendto(self.camera_data.encode(),(ANTL_HOST,ANTL_PORT))
            print("asdf")
+           time.sleep(4)
 
     
         
