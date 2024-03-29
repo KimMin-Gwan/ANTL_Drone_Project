@@ -23,4 +23,8 @@ class Main_Function():
         drone_thread=Thread(target=self.drone_controller.controll_dron) 
         drone_thread.start()
         
-        
+
+if __name__=="__main__":
+    main_name=Main_Function()
+    print("strat_system")
+    main_name.start_system()
