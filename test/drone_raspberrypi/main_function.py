@@ -5,6 +5,7 @@ import Manual
 import socket
 import DroneController
 from threading import Thread
+import threading
 import asyncio
 class Main_Function():
     def __init__(self) -> None:
@@ -30,8 +31,8 @@ class Main_Function():
         camera_thread=Thread(target=self.camera.send_FPV)
         camera_thread.start()
         print("====")
-        await asyncio.get_event_loop().run_in_executor(None, self.drone_controller.controll_dron)
-       
+        controll_thread= threading.Thread(target=self.drone_controller.start_async_controll_drone)
+        controll_thread.start()
         
 async def main():
     main_name=Main_Function()
