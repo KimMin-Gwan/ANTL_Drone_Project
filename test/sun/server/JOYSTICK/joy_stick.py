@@ -40,16 +40,53 @@ vrx_channel_2 = 1
 vry_channel_2 = 2  
 
 delay = 0.1  
-
+degree=15
 while True:
 
   vrx_pos = ReadChannel(vrx_channel)  
   vry_pos =abs (ReadChannel(vry_channel)-1022)
-  swt_val = ReadChannel(swt_channel)  
+  #swt_val = ReadChannel(swt_channel)  
 
   vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
-  vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1022)
-  swt_val_2 = ReadChannel_2(swt_channel_2)  
+  vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1023)
+  #swt_val_2 = ReadChannel_2(swt_channel_2)  
+  if(vrx_pos>=500 and vrx_pos<=510):
+    vrx_pos=500
+  elif(vrx_pos>=0 and vrx_pos < 3):
+    vrx_pos=0
+  elif(vrx_pos>=1015 and vrx_pos <=1025):
+    vrx_pos=1000
+
+  if(vry_pos>=514 and vry_pos<=524):
+    vrx_pos=500
+  elif(vry_pos>=0 and vry_pos < 3):
+    vry_pos=0
+  elif(vry_pos>=1017 and vry_pos <=1027):
+    vry_pos=1000
+
+  if(vrx_pos_2>=517 and vrx_pos_2 <=528):
+    vrx_pos_2=500
+  elif (vrx_pos_2>=0 and vrx_pos_2 < 3):
+    vrx_pos_2=0
+  elif (vrx_pos_2<=1017 and vrx_pos_2>=1026):
+    vrx_pos_2=1000
+  
+  
+  if(vry_pos_2>=512 and vry_pos_2<=522):
+    vry_pos_2=500
+  elif (vry_pos_2>=0 and vry_pos_2<=5):
+    vry_pos_2=0
+  elif (vry_pos_2>=1017 and vry_pos_2<=1028):
+    vry_pos_2=1000
+    
+  #vrx_pos => yaw   vry_pos => Throthle       vrx_pos_2 => ROLL vry_pos_2 => pitch
+  vry_pos=(vry_pos/1000)
+  vrx_pos=((vrx_pos-500)/1000)*degree*2
+  
+  vrx_pos_2=((vrx_pos_2-500)/1000)*degree*2
+
+  vry_pos_2=((vry_pos_2-500)/1000)*degree*2
+  
   msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
   sock.sendto(msg.encode(),(HOST,PORT))
   time.sleep(delay)
