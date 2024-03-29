@@ -87,12 +87,16 @@ while True:
     vry_pos=0.2
   elif vry_pos >=0.7:
     vry_pos=0.7
-  vrx_pos=float(((vrx_pos-500)/1000)*degree*2)
+  # vrx_pos=float(((vrx_pos-500)/1000)*degree*2)
   
-  vrx_pos_2=float(((vrx_pos_2-500)/1000)*degree*2)
+  # vrx_pos_2=float(((vrx_pos_2-500)/1000)*degree*2)
 
-  vry_pos_2=float(((vry_pos_2-500)/1000)*degree*2)
+  # vry_pos_2=float(((vry_pos_2-500)/1000)*degree*2)
+  vrx_pos=float(((vrx_pos-500)/500))
   
+  vrx_pos_2=float(((vrx_pos_2-500)/500))
+
+  vry_pos_2=float(((vry_pos_2-500)/500))
   msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
 
   print(msg)
