@@ -30,8 +30,8 @@ class Main_Function():
         camera_thread=Thread(target=self.camera.send_FPV)
         camera_thread.start()
         print("====")
-        loop=asyncio.get_event_loop()
-        loop.call_soon_threadsafe(loop.create_task,self.drone_controller.controll_dron())
+        await asyncio.get_event_loop().run_in_executor(None, self.drone_controller.controll_dron)
+       
         
 async def main():
     main_name=Main_Function()
