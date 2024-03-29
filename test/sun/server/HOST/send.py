@@ -16,7 +16,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 sock.bind((HOST,PORT))
 
-HOST_2='192.168.232.134'
+HOST_2='192.168.232.136'
 PORT_2=65433
 sock_2=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
