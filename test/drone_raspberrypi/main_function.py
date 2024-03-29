@@ -16,14 +16,13 @@ class Main_Function():
         self.loop=asyncio.get_event_loop()
         self.drone=None
   
-        
-        self.drone_controller=DroneController.controller(self.drone,self.Rx_socket)
         self.camera=Camera.camera(self.Tx_socket) 
         print("SYSTEM ALARM::Initializing Successfully Finished")
    
     async def create_drone_instance(self):
         self.drone=Drone.drone()
         await self.drone.make_drone()
+        self.drone_controller=DroneController.controller(self.drone,self.Rx_socket)
         
         
     async def start_system(self):
