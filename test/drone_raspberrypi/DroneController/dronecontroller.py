@@ -15,7 +15,7 @@ class controller():
         self.pitch=None
         self.yaw=None
         self.mode_type=None        
-        
+        self.manual_drone=manual(drone)
         
     async def controll_dron(self):  #thread로 동작해야할 함수 
         #### Yaw Pitch Roll Throttle mode를 계속해서 받아서 mode에 따라서 드론 조종방식을 계속해서 바꾸어준다.
@@ -32,7 +32,7 @@ class controller():
             if(self.mode_type=="stop"):
                 pass
             elif(self.mode_type=="man"): #manual_mode 조종
-                manual.manul_controls(self.pitch,self.yaw,self.throttle,self.roll)
+                self.manual_drone.manul_controls(self.pitch, self.yaw, self.throttle, self.roll)
             elif(self.mode_type=="det"):  #detection mode 조종
                 pass
     def start_async_controll_drone(self):
