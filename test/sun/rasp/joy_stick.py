@@ -53,8 +53,8 @@ while True:
     vry_pos=1000
   if(vry_pos>=500 and vry_pos<=521):
     vry_pos=500
-  vrx_pos=vrx_pos-500
-  vry_pos=vry_pos-500
+  vrx_pos=(vrx_pos-500)/1000
+  vry_pos=(vry_pos-500)/1000
   vrx_pos= vrx_pos*90
   vry_pos=vry_pos*90
   
