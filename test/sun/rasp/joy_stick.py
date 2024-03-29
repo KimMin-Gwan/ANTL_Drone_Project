@@ -41,8 +41,22 @@ while True:
   vry_pos_2 = ReadChannel_2(vry_channel_2) 
   swt_val_2 = ReadChannel_2(swt_channel_2)  
 
- 
+  
   print("first    X : {}  Y : {}  Switch : {}".format(vrx_pos,vry_pos,swt_val)) 
-  print("second   X : {}  Y : {}  Switch : {}".format(vrx_pos_2,vry_pos_2,swt_val_2)) 
+  #print("second   X : {}  Y : {}  Switch : {}".format(vrx_pos_2,vry_pos_2,swt_val_2)) 
 
   time.sleep(delay)
+def cal():
+  stick_value = 500  # 스틱의 값 (0에서 1000 범위)
+min_stick_value = 0
+max_stick_value = 1000
+min_angle = -45  # 최소 각도
+max_angle = 45   # 최대 각도
+
+# 값의 정규화
+normalized_value = ((stick_value - min_stick_value) / (max_stick_value - min_stick_value)) * 2 - 1
+
+# 각도로 변환
+angle_degrees = normalized_value * max_angle
+
+print(angle_degrees)  # 결과 출력
