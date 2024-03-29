@@ -16,7 +16,7 @@ def ReadChannel_2(channel):
   return data
 def ReadChannel(channel):           
   adc = spi.xfer2([1,(8+channel)<<4,0])
-  data = ((adc[1]&15) << 8) + adc[2]
+  data = ((adc[1]) << 8) + adc[2]
   return data
  
 # Define sensor channels
