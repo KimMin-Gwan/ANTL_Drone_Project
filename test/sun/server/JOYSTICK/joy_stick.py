@@ -59,7 +59,7 @@ while True:
     vrx_pos=1000
   
   if(vry_pos>=495 and vry_pos<=510):
-    vrx_pos=500
+    vry_pos=500
   elif(vry_pos>=0 and vry_pos < 3):
     vry_pos=0
   elif(vry_pos>=1017 and vry_pos <=1027):
