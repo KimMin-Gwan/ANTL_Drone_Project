@@ -57,7 +57,7 @@ while True:
   elif(vrx_pos>=1015 and vrx_pos <=1025):
     vrx_pos=1000
 
-  if(vry_pos>=514 and vry_pos<=524):
+  if(vry_pos>=514 and vry_pos<=530):
     vrx_pos=500
   elif(vry_pos>=0 and vry_pos < 3):
     vry_pos=0
@@ -88,7 +88,7 @@ while True:
   vry_pos_2=float(((vry_pos_2-500)/1000)*degree*2)
   
   msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
-  
+
   print(msg)
   sock.sendto(msg.encode(),(HOST,PORT))
   time.sleep(delay)
