@@ -6,7 +6,7 @@ import socket
 import DroneController
 from threading import Thread
 class Main_Function():
-    async def __init__(self) -> None:
+    def __init__(self) -> None:
         print("SYSTEM ALAM :: DRONE FUNCTION ON")
         self.Rx_socket=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
         self.Rx_socket.bind((Information.ANTL_HOST,Information.ANTL_PORT))  #받는거니까 내가 server로 여는거고
