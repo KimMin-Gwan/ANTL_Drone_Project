@@ -7,7 +7,7 @@ class controller():
     def __init__(self,drone,con_sock) -> None:  #main에서 drone객체 생성후 전달하고 main 에서 con_sock열어서 전달함
         
         self.antl_dron=drone  #드론 객체 전달받았고
-        self.sock=None
+        self.sock=con_sock
         self.data=None 
 
         self.roll=None
