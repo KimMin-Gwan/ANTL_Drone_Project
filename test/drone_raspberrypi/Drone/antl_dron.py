@@ -20,8 +20,8 @@ class drone():
             if health.is_global_position_ok and health.is_home_position_ok:
                 print("-- Global position state is good enough for flying.")
                 break
-        self.arming()
-        self.TakingOff()
+        await self.arming()
+        await self.TakingOff()
     async def arming(self):
         print("-- Arming")
         await self.drone.arm()
