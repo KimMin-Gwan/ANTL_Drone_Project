@@ -32,8 +32,8 @@ class Main_Function():
         loop=asyncio.get_event_loop()
         loop.call_soon_threadsafe(loop.create_task,self.drone_controller.controll_dron())
         
-
-if __name__=="__main__":  #Test용 main
+async def main():
     main_name=Main_Function()
-    print("strat_system")
-    main_name.start_system()
+    await main_name.start_system()
+if __name__=="__main__":  #Test용 main
+    asyncio.run(main())
