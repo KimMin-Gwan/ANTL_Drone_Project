@@ -80,12 +80,12 @@ while True:
     vry_pos_2=1000
     
   #vrx_pos => yaw   vry_pos => Throthle       vrx_pos_2 => ROLL vry_pos_2 => pitch
-  vry_pos=(vry_pos/1000)
-  vrx_pos=((vrx_pos-500)/1000)*degree*2
+  vry_pos=float((vry_pos/1000))
+  vrx_pos=float(((vrx_pos-500)/1000)*degree*2)
   
-  vrx_pos_2=((vrx_pos_2-500)/1000)*degree*2
+  vrx_pos_2=float(((vrx_pos_2-500)/1000)*degree*2)
 
-  vry_pos_2=((vry_pos_2-500)/1000)*degree*2
+  vry_pos_2=float(((vry_pos_2-500)/1000)*degree*2)
   
   msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}"
   sock.sendto(msg.encode(),(HOST,PORT))
