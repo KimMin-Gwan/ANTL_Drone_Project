@@ -14,7 +14,7 @@ class Main():
     async def run(self):
         view_thread = None
         try:
-            view_thread = Thread(target=self.__view.run_serve)
+            view_thread = Thread(target=self.__view.run_server)
             view_thread.start()
             await self.__controller.run()
         except Exception as e:
