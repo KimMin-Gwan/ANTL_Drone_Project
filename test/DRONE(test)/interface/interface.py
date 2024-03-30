@@ -6,6 +6,7 @@ class Interface():
         self.pitch=None
         self.mode_type=None
         self.make_dorne=False
+        self.drone_power_flag="ON"
     def set_euler_angle(self,roll,throttle,yaw,pitch,mode):
         self.pitch=pitch
         self.yaw=yaw
@@ -21,3 +22,9 @@ class Interface():
         
     def get_drone_flag(self):
         return self.make_dorne
+    
+    def set_drone_power(self,flag) :
+        self.drone_power_flag=flag
+        
+    def get_drone_power(self):
+        return self.drone_power_flag

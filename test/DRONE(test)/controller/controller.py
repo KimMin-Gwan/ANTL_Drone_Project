@@ -20,13 +20,12 @@ class Controller():
                 break
         print("start drone controll")
         while True:
+            
             (mode_type,pitch,yaw,throttle,roll)=self.interface.get_euler_angle()
-            print(pitch)
             if(mode_type=="man") :  #manual모드로 비행기 조종한다.
                 await self.drone.manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
                 #await self.manul_mode.manul_controls(pitch,yaw,throttle,roll) 
             elif(mode_type=="stop"):
                 await self.drone.action.land()
-                break
-            
+
         

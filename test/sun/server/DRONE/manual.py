@@ -84,8 +84,7 @@ async def manual_controls():
         roll=(float(my_data[0]))
         throttle=float(my_data[1])
         yaw=(float(my_data[2]))
-        pitch=(float(my_data[3])) 
-         
+        pitch=(float(my_data[3]))  
         await drone.manual_control.set_manual_control_input(
             pitch, yaw, throttle, roll)
 
