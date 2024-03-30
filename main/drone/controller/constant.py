@@ -1,15 +1,10 @@
 import platform
 import cv2
 
-PATH_TO_MODEL = "/home/pi/ANTL_Drone_Project/main/drone/mobilenet_ssd/"
-MODEL = "mobile_SSD_v2_320x320_kr_ob.tflite"
-TPU_MODEL = "mobile_SSD_v2_320x320_kr_ob_edgetpu.tflite"
-PATH_TO_LABEL = PATH_TO_MODEL + "labelmap.txt"
-
-PATH_TO_MODEL = "/home/pi/ANTL_Drone_Project/main/drone/mobilenet_ssd/"
+PATH_TO_MODEL = "/home/pi/ANTL_DRONE_Project/main/drone/mobilenet_ssd/"
 MODEL = "mobilenet_ssd_v2_coco_quant_postprocess.tflite"
 TPU_MODEL = "mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite"
-PATH_TO_LABEL = "/home/pi/ANTL_Drone_Project/main/drone/mobilenet_ssd/coco_labels.txt"
+PATH_TO_LABEL = "/home/pi/ANTL_DRONE_Project/main/drone/mobilenet_ssd/coco_labels.txt"
 
 
 EDGETPU = True
