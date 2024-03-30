@@ -30,7 +30,7 @@ class drone():
         await self.TakingOff()
     async def arming(self):
         print("-- Arming")
-        await self.antl_drone.arm()
+        await self.antl_drone.action.arm()
     
     async def TakingOff(self):
         print("-- Taking off")
