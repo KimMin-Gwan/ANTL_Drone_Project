@@ -17,7 +17,7 @@ class PilotController:
         while True:
             mode_type=self.__mode.get_mode()
             (yaw,throttle,pitch,roll)=self.__pilot_model.get_key()
-            
+            print(mode_type,"====")
             if mode_type==0:
                 print(yaw)
                 await self.__drone.get_drone().manul_control.set_manual_control_input(pitch,yaw,throttle,roll)
