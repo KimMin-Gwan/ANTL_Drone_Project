@@ -1,4 +1,4 @@
-from RT_APP import RealTimeAPI, mingcorn
+from view.RT_APP import RealTimeAPI, mingcorn
 from threading import Thread
 
 HOST = "127.0.0.1"

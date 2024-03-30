@@ -1,7 +1,7 @@
 
-from pilot_controller import PilotController
-from video_controller import VideoController
-from object_controller import ObjectController
+from controller.pilot_controller import PilotController
+from controller.video_controller import VideoController
+from controller.object_controller import ObjectController
 from model import VideoModel
 from model import ModeModel
 from threading import Thread
