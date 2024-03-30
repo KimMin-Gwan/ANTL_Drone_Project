@@ -25,7 +25,8 @@ class MasterController:
             self.__pilot_controller = PilotController(mode=self.__mode)
             await self.__pilot_controller.init_drone()
             await self.__pilot_controller.run()
-        except:
+        except Exception as E:
+            print(E) 
             print("Asyncio did Bad action")
 
     def get_video(self):
