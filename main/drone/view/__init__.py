@@ -1,3 +1,3 @@
-from drone.view.view import *
-from drone.view.RT_APP import *
+from view import *
+from RT_APP import *
 

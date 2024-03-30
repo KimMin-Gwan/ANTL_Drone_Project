@@ -1,3 +1,3 @@
-from drone.model.mode_model import *
-from drone.model.pilot_model import *
-from drone.model.video_model import *
+from mode_model import *
+from pilot_model import *
+from video_model import *

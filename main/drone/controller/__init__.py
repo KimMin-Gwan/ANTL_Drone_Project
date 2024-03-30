@@ -1,8 +1,8 @@
-from drone.controller.common import *
-from drone.controller.constant import *
-from drone.controller.master_controller import *
-from drone.controller.object_controller import *
-from drone.controller.pilot_controller import *
-from drone.controller.utils import *
-from drone.controller.video_controller import *
+from common import *
+from constant import *
+from master_controller import *
+from object_controller import *
+from pilot_controller import *
+from utils import *
+from video_controller import *
 
