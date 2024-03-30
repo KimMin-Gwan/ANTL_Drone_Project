@@ -17,13 +17,13 @@ while True:
 
     # 데이터 수신
     for _ in range(20):
-        data, addr = sock.recvfrom(46080)  # 각 프레임은 46080바이트 크기
-        print(data)
+        print("dafs")
+        data, addr = sock.recvfrom(46082)  # 각 프레임은 46080바이트 크기
         picture += data
 
     # 수신한 데이터를 NumPy 배열로 변환하여 영상으로 표시
     frame = np.frombuffer(picture, dtype=np.uint8)
-    frame = frame.reshape(480, 640, 3)  # 이미지 크기에 맞게 재구성
+    frame = frame.reshape(640, 480, 3)  # 이미지 크기에 맞게 재구성
     cv2.imshow("Video", frame)
 
     # 'q' 키를 누르면 종료
