@@ -54,7 +54,7 @@ class PilotModel:
         return 
     
     def get_key(self):
-        return self.__key
+        return self.__key.get_key()
     
     def get_mode(self):
         return self.__mode
