@@ -24,9 +24,6 @@ class Drone:
         await self.antl_drone.action.arm()
 
         
-        print("---takeoff")
-        await self.antl_drone.action.takeoff()
-        await asyncio.sleep(2)
     
     
     def get_drone(self):
