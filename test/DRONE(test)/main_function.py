@@ -21,7 +21,7 @@ class Main_Function():
     async def make_drone(self):
         print("SYSTEM ALARM : MAKING DRONE....")
         await self.drone.make_drone()  #드론을 만들어야함
-        self.drone_controller=controller.Controller(self.drone) 
+        self.drone_controller=controller.Controller(self.receive,self.drone) 
     def start_system(self):
 
         asyncio.run(self.make_drone())
