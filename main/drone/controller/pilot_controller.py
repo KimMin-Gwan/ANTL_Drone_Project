@@ -20,7 +20,7 @@ class PilotController:
             print(mode_type,"====")
             if mode_type==0:
                 print(yaw)
-                await self.__drone.get_drone().manul_control.set_manual_control_input(pitch,yaw,throttle,roll)
+                await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
             elif mode_type==1:
                 await self.__drone.get_drone().action.land()  #land 함수
             elif mode_type==2:
