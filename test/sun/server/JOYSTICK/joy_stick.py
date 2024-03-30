@@ -46,7 +46,7 @@ while True:
 
   vrx_pos = ReadChannel(vrx_channel)  
   vry_pos =abs (ReadChannel(vry_channel)-1022)
-  #swt_val = ReadChannel(swt_channel)  
+  swt_val = ReadChannel(swt_channel)  
 
   vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
   vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1023)
@@ -97,7 +97,12 @@ while True:
   vrx_pos_2=float(((vrx_pos_2-500)/500))
 
   vry_pos_2=float(((vry_pos_2-500)/500))
-  msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}:man"
+  mode=""
+  if(swt_val <300):
+    mode="stop"
+  else:
+    mode="man"
+  msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}:"+mode
 
   print(msg)
   sock.sendto(msg.encode(),(HOST,PORT))
