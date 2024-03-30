@@ -1,5 +1,5 @@
-from controller.master_controller import MasterController
-from view.view import APPView
+from controller import MasterController
+from view import APPView
 from threading import Thread
 import asyncio
 

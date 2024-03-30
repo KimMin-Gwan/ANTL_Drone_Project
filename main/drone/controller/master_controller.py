@@ -2,8 +2,8 @@
 from pilot_controller import PilotController
 from video_controller import VideoController
 from object_controller import ObjectController
-from model.video_model import VideoModel
-from model.mode_model import ModeModel
+from model import VideoModel
+from model import ModeModel
 from threading import Thread
 
 class MasterController:

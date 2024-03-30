@@ -7,8 +7,8 @@ import numpy as np
 from threading import Thread
 import time
 
-from model.video_model import VideoModel
-from model.mode_model import ModeModel
+from model import VideoModel
+from model import ModeModel
 
 
 class ObjectController:

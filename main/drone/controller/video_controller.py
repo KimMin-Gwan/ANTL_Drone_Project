@@ -3,7 +3,7 @@ import numpy as np
 import pyrealsense2.pyrealsense2 as rs
 import time
 import threading
-from model.video_model import VideoModel
+from model import VideoModel
 
 #TEST_FLAG = (True, )
 TEST_FLAG = (False, )

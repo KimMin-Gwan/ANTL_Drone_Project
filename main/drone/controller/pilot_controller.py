@@ -1,5 +1,5 @@
-from model.pilot_model import PilotModel
-from model.pilot_model import Drone
+from model import PilotModel
+from model import Drone
 import asyncio
 
 from mavsdk import System   
