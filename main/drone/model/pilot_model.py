@@ -20,8 +20,8 @@ class Drone:
             #if health.is_global_position_ok and health.is_home_position_ok:
                 #print("-- Global position state is good enough for flying.")
                 #break
-        print("-- Arming")
-        await self.antl_drone.action.arm()
+        #print("-- Arming")
+        #await self.antl_drone.action.arm()
 
         
     
