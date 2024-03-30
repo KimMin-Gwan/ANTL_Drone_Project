@@ -12,6 +12,7 @@ class Receive():
         while True:
             self.data,self.addr=self.Rx_socket.recvfrom(1024) 
             self.data=(self.data.decode().split(":"))
+            print(self.data[0])
             self.interface.set_euler_angle(float(self.data[0]),float(self.data[1]),float(self.data[2]),float(self.data[3]),self.data[4]) #roll , throttle, yaw , pitch, mode
              
         
