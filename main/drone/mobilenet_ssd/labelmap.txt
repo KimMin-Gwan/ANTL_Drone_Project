@@ -1,0 +1,15 @@
+bike
+fireplug
+pot
+motorcycle
+clothes_box
+bus_stop
+snowbox
+manhole
+billboard
+quick_board
+mailbox
+bollard
+trash_can
+food_waste_bin
+garbage_bag

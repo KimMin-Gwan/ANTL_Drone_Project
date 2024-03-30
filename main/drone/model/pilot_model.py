@@ -22,6 +22,8 @@ class Drone:
         await self.antl_drone.action.arm()
     def get_drone(self):
         return self.antl_drone
+    
+
 class PilotModel:
     def __init__(self):
         self.__key = Key()
@@ -31,8 +33,19 @@ class PilotModel:
         self.__mode = mode
         return
 
+    # key = ['0.1', '0.1', '0.1', '0.1']
     def set_key(self, key):
-        self.__key=key
+        try:
+            self.__key.set_key(
+                yaw=key[0], throttle=key[1], 
+                pitch=key[2], roll=key[3]
+                )
+        except:
+            print("ERROR :: Bad key request")
+            self.__key.set_key(
+                yaw=0, throttle=0.5, 
+                pitch=0, roll=0
+                )
         return 
     
     def get_key(self):
