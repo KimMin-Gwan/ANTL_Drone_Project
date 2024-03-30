@@ -12,11 +12,11 @@ class PilotController:
             mode_type=self.__pilot_model.get_mode()
             (yaw,throttle,pitch,roll)=self.__pilot_model.get_key()
             
-            if mode_type=="manual":
+            if mode_type=="0":
                 await self.__drone.get_drone().manul_control.set_manual_control_input(pitch,yaw,throttle,roll)
-            elif mode_type=="land":
+            elif mode_type=="1":
                 await self.__drone.get_drone().action.land()  #land 함수
-            elif mode_type=="detect":
+            elif mode_type=="2":
                 pass
         
     
