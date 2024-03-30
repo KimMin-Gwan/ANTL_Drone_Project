@@ -1,7 +1,7 @@
 from view.RT_APP import RealTimeAPI, mingcorn
 from threading import Thread
 
-HOST = "127.0.0.1"
+HOST = "192.168.50.72"
 PORT = 5001
 
 class APPView():
