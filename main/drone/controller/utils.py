@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from PIL import Image
-from constant import *
+from controller.constant import *
 
     
 class Image_Manager:
