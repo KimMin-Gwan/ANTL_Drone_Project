@@ -2,7 +2,7 @@
 import asyncio
 from mavsdk import System
 class Drone:
-    async def __init__(self) -> None:
+    def __init__(self) -> None:
         self.antl_drone = None
         pass
 
