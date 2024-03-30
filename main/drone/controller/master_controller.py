@@ -22,7 +22,7 @@ class MasterController:
 
     async def __run_pilot(self):
         try:
-            self.__pilot_controller = PilotController()
+            self.__pilot_controller = PilotController(mode=self.__mode)
             await self.__pilot_controller.init_drone()
             await self.__pilot_controller.run()
         except:
@@ -47,6 +47,7 @@ class MasterController:
             except:
                 key = [0, 0.3, 0, 0]
         else: # 수동 조작모드
+            key.clear()
             for k in key_data:
                 key.append(float(k))
         try:

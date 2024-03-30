@@ -7,7 +7,7 @@ client_sockets = []
 
 ## Server IP and Port ##
 
-HOST = "127.0.0.1"
+HOST = "165.229.185.185"
 PORT = 5000
 
 ########## processing in thread ##

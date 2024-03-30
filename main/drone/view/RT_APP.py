@@ -22,6 +22,7 @@ class RealTimeAPI:
                 client_socket.sendall(struct.pack(">L", len(frame)) + frame)
 
         except Exception as e:
+            print("send died")
             print(e)
         return
             
@@ -31,7 +32,6 @@ class RealTimeAPI:
             while True:
                 recv_data = client_socket.recv(1024)
                 decoded_data = recv_data.decode()
-                print(decoded_data)
 
                 data = decoded_data.split(' ', 4)
                 key_data = data[0:4]
@@ -40,14 +40,19 @@ class RealTimeAPI:
                 self.controller.set_recv_data(key_data, mode_data)
                 
         except Exception as e:
+            print("recv died")
             print(e)
         return
 
     def __handle_client(self, client_socket):
-        send_thread = Thread(target=self.__data_send, args=(client_socket,))
-        recv_thread = Thread(target=self.__data_recv, args=(client_socket,))
-        send_thread.start()
-        recv_thread.start()
+        try:
+            send_thread = Thread(target=self.__data_send, args=(client_socket,))
+            recv_thread = Thread(target=self.__data_recv, args=(client_socket,))
+            send_thread.start()
+            recv_thread.start()
+        except:
+            print("handle_client died")
+
 
     def waiting_client(self, server_socket:Sock):
         self.server_socket = server_socket
@@ -58,6 +63,7 @@ class RealTimeAPI:
             self.__handle_client(client_socket)
 
         except Exception as e:
+            print("wait_client died")
             print(e)
 
 
@@ -71,7 +77,7 @@ class mingcorn:
         print(f"[:  WSGI running on [http://{host}:{str(port)}. ")
 
         rt_thread = Thread(target=app.waiting_client, args=(server_socket,))
-
-        return rt_thread
+        rt_thread.start()
+        return
 
 

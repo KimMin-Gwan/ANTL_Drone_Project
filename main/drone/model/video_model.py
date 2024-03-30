@@ -1,6 +1,6 @@
 import cv2
 
-WAIT_IMG_PATH = "/home/pi/ANTL_Drone_Project/main/drone/model/wait_img.png"
+WAIT_IMG_PATH = "/home/pi/ANTL_DRONE_Project/main/drone/model/wait_img.png"
 camera = cv2.VideoCapture(0)
 
 
