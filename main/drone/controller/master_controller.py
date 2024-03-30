@@ -47,6 +47,7 @@ class MasterController:
             except:
                 key = [0, 0.3, 0, 0]
         else: # 수동 조작모드
+            key.clear()
             for k in key_data:
                 key.append(float(k))
         try:
