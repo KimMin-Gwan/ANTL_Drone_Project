@@ -1,13 +1,15 @@
-from controller import MasterController
-from view import APPView
+# from controller import MasterController
+# from view import APPView
+import controller
+import view
 from threading import Thread
 import asyncio
 
 
 class Main():
     def __init__(self):
-        self.__controller = MasterController()
-        self.__view = APPView(controller=self.__controller)
+        self.__controller = controller.MasterController()
+        self.__view = view.APPView(controller=self.__controller)
 
     async def run(self):
         view_thread = None
