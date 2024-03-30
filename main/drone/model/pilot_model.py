@@ -67,7 +67,6 @@ class Key:
         self.__roll = 0
     ##set
     def set_key(self,yaw,throttle,pitch,roll):
-        print(yaw, throttle, pitch, roll)
         self.__yaw=yaw
         self.__throttle=throttle
         self.__pitch=pitch
