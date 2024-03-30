@@ -27,6 +27,7 @@ class Drone():
         
         await self.arming()
         self.interface.set_drone_flag(1) 
+        print("==================완료")
         
         
     async def arming(self):
