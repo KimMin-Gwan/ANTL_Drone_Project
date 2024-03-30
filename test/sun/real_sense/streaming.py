@@ -1,6 +1,6 @@
 import cv2
 import pyrealsense2.pyrealsense2 as rs
-
+import numpy as np
 def main():
     # RealSense pipeline 설정
     pipeline = rs.pipeline()
