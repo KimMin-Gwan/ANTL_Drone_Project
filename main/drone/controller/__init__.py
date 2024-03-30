@@ -1,4 +1,4 @@
-from common import *
+from main.drone.controller.common import *
 from constant import *
 from master_controller import *
 from object_controller import *
