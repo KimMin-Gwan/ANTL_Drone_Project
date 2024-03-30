@@ -1,6 +1,6 @@
 import socket
 import cv2
-import pyrealsense2 as rs
+import pyrealsense2.pyrealsense2 as rs
 import numpy as np
 
 UDP_IP = '165.229.185.195'
