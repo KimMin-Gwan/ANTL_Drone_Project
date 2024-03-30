@@ -1,12 +1,12 @@
 import cv2
 
 WAIT_IMG_PATH = "/home/pi/ANTL_Drone_Project/main/drone/model/wait_img.png"
+camera = cv2.VideoCapture(0)
 
 
 class VideoModel():
     def __init__(self):
         self.__wait_img = cv2.imread(WAIT_IMG_PATH)
-        self.__camera = cv2.VideoCapture(0)
         self.__frame = None
         self.__raw_frame = None
 
@@ -23,7 +23,7 @@ class VideoModel():
         return
 
     def capture_frame(self):
-        ret, self.__frame = self.__camera.read()
+        ret, self.__frame = camera.read()
         if not ret:
             print("Camera Error")
         return
@@ -34,8 +34,6 @@ class VideoModel():
     def get_raw_frame(self):
         return self.__raw_frame
 
-    def get_camera(self):
-        return self.__camera
     
 
     def get_frame_bytes(self):
