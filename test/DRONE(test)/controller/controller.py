@@ -15,8 +15,8 @@ class Controller():
     async def controll_dron(self):   #비동기로 계속 돌리고 
         while True:  #다른 스레드에서 드론 만드는거 기다리고 
             print("waitting drone making .....")
-            asyncio.sleep(1)
-            if(self.interface.get_drone_flag is True):
+            await asyncio.sleep(1)
+            if(self.interface.get_drone_flag() is True):
                 break
         print("start drone controll")
         while True:
