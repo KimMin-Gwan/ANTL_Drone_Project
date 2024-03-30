@@ -11,7 +11,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Realsense pipeline 설정
 pipeline = rs.pipeline()
 config = rs.config()
-config.enable_stream(rs.stream.color, 640, 480, rs.format.rgb8, 30)
+config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
 
 # Realsense 카메라 시작
 pipeline.start(config)
@@ -31,7 +31,6 @@ try:
         d = color_image.flatten()
         s = d.tostring()
         for i in range(20):
-            print(s[123])
             sock.sendto(bytes([i]) + s[i*46080:(i+1)*46080], (UDP_IP, UDP_PORT))
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
