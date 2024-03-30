@@ -10,7 +10,7 @@ class manual():
     
     
     async def manul_controls(self,pitch,yaw,throttle,roll):
-        await self.antl_drone.get_drone().manual_control.set_manual_control_input(
+        await self.antl_drone.manual_control.set_manual_control_input(
            pitch,yaw,throttle,roll 
         )
         await asyncio.sleep(0.01)
