@@ -51,7 +51,6 @@ class MasterController:
             for k in key_data:
                 key.append(float(k))
         try:
-            print(key)
             self.__pilot_controller.set_key(key=key)
         except:
             print("ERROR :: pilot _controller did not maked")
