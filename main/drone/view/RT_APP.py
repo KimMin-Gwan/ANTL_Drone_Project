@@ -14,6 +14,7 @@ class RealTimeAPI:
         self.controller = controller
 
     def __data_send(self, client_socket:Sock):
+        print("recv start")
         try:
            while True:
                 frame = self.controller.get_video()
@@ -25,10 +26,12 @@ class RealTimeAPI:
         return
             
     def __data_recv(self, client_socket:Sock):
+        print("recv start")
         try:
             while True:
                 recv_data = client_socket.recv(1024)
                 decoded_data = recv_data.decode()
+                print(decoded_data)
 
                 data = decoded_data.split(' ', 4)
                 key_data = data[0:4]
