@@ -31,7 +31,7 @@ PORT = 5000
 
 #HOST='192.168.50.232'  #라파 투 라파
 #PORT=65433
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 swt_channel = 0  
 vrx_channel = 1  
 vry_channel = 2  
@@ -42,6 +42,9 @@ vry_channel_2 = 2
 
 delay = 0.1
 degree=20
+
+sock.connect((HOST, PORT))
+
 while True:
 
   vrx_pos = ReadChannel(vrx_channel)  
@@ -107,7 +110,8 @@ while True:
   msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "+mode
 
   print(msg)
-  sock.sendto(msg.encode(),(HOST,PORT))
+  sock.sendall(msg.encode())
+
   time.sleep(delay)
   
   
