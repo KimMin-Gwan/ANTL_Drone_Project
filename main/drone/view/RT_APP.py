@@ -18,7 +18,6 @@ class RealTimeAPI:
            while True:
                 frame = self.controller.get_video()
                 frame = pickle.dumps(frame)
-
                 client_socket.sendall(struct.pack(">L", len(frame)) + frame)
 
         except Exception as e:

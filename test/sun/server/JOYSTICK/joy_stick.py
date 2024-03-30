@@ -101,8 +101,8 @@ while True:
   if(swt_val <300):
     mode="stop"
   else:
-    mode="man"
-  msg=f"{vrx_pos}:{vry_pos}:{vrx_pos_2}:{vry_pos_2}:"+mode
+    mode="manual"
+  msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "+mode
 
   print(msg)
   sock.sendto(msg.encode(),(HOST,PORT))
