@@ -30,7 +30,7 @@ class Main_Function():
         asyncio.run(self.make_drone())
         receive_thread=Thread(target=self.receive.receive_data)
         receive_thread.start() #스레드 먼저 돌리고
-        asyncio.run(self.start_drone_controll)
+        asyncio.run(self.start_drone_controll())
         
 
 
