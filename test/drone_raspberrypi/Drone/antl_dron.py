@@ -11,7 +11,7 @@ class drone():
         
         self.antl_drone=System()
         
-        await self.antl_drone.connect(system_address=VMWARE_SYSTEM_ADDRESS)
+        await self.antl_drone.connect(system_address="udp://:14540")
         
         print("Wating for drone to connect...")  #drone connect 
         async for state in self.antl_drone.core.connection_state():
