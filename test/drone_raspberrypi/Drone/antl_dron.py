@@ -8,7 +8,9 @@ class drone():
     def __init__(self) -> None:
         self.antl_drone=None
     async def make_drone(self):
+        
         self.antl_drone=System()
+        
         await self.antl_drone.connect(system_address=VMWARE_SYSTEM_ADDRESS)
         
         print("Wating for drone to connect...")  #drone connect 

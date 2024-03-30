@@ -15,7 +15,7 @@ class controller():
         self.pitch=None
         self.yaw=None
         self.mode_type=None       
-        self.manual_drone=manual(self.antl_dron)
+        self.manual_drone=manual(self.antl_dron.get_drone())
         print("make Manul")
         
     async def controll_dron(self):  #thread로 동작해야할 함수 
