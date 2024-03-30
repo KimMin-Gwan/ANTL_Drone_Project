@@ -33,7 +33,7 @@ class MasterController:
         return frame
 
     def set_recv_data(self, key_data, mode_data):
-        key = []
+        key = [0, 0, 0, 0]
         mode = int(mode_data)
         # mode : 0 -> manual, 1 -> auto
         if self.__mode.get_mode() != mode:
