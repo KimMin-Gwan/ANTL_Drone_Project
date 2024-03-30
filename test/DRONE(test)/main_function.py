@@ -23,8 +23,7 @@ class Main_Function():
         await self.drone.make_drone()  #드론을 만들어야함
         self.drone_controller=controller.Controller(self.interface,self.drone) 
     async def start_drone_controll(self):
-        await self.make_drone()
-        await self.drone_controller.controll_dron()
+        await asyncio.gather(self.make_drone(),self.drone_controller.controll_dron())
     
     def start_system(self):
 
