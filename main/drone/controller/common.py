@@ -1,7 +1,7 @@
 from typing import Any
 import numpy as np
 import cv2
-from constant import *
+from controller.constant import *
 #from tensorflow.lite.python.interpreter import Interpreter
 import tflite_runtime.interpreter as tflite
 import os
