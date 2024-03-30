@@ -1,0 +1,1 @@
+from information.constant import *
