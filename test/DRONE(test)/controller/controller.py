@@ -16,7 +16,7 @@ class Controller():
         while True:  #다른 스레드에서 드론 만드는거 기다리고 
             print("waitting drone making .....")
             await asyncio.sleep(1)
-            if(self.interface.get_drone_flag() is True):
+            if(self.interface.get_drone_flag() == 1):
                 break
         print("start drone controll")
         while True:
