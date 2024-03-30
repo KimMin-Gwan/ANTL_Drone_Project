@@ -22,6 +22,12 @@ class Drone:
                 #break
         print("-- Arming")
         await self.antl_drone.action.arm()
+
+        
+        print("---takeoff")
+        await self.antl_drone.action.takeoff()
+    
+    
     def get_drone(self):
         return self.antl_drone
     
