@@ -3,7 +3,10 @@ import asyncio
 from mavsdk import System
 class Drone:
     async def __init__(self) -> None:
-    #async def make_rone(self):
+        self.antl_drone = None
+        pass
+
+    async def make_drone(self):
         self.antl_drone=System()
         await self.antl_drone.connect(system_address="udp://14540")
         

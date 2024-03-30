@@ -4,9 +4,13 @@ import asyncio
 
 from mavsdk import System   
 class PilotController:
-    def __init__(self):
+    async def __init__(self):
         self.__pilot_model = PilotModel()
         self.__drone=Drone()
+
+    async def init_drone(self):
+        await self.__drone.make_drone()
+
 
     async def run(self):
         while True:
