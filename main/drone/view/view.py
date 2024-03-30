@@ -12,15 +12,10 @@ class APPView():
         rt_thread = None
 
         try:
-            rt_thread:Thread = mingcorn.run(
+            mingcorn.run(
                 app=self.rt_app, host=HOST, port=PORT)
-            rt_thread.start()
         except Exception as e:
             print(e)
-        finally:
-            if rt_thread:
-                rt_thread.join()
-            raise "Sytem Terminate"
 
 
 
