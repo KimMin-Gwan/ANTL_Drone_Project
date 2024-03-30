@@ -31,7 +31,6 @@ class RealTimeAPI:
             while True:
                 recv_data = client_socket.recv(1024)
                 decoded_data = recv_data.decode()
-                print(decoded_data)
 
                 data = decoded_data.split(' ', 4)
                 key_data = data[0:4]

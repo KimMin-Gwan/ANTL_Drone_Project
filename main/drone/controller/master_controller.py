@@ -22,7 +22,7 @@ class MasterController:
 
     async def __run_pilot(self):
         try:
-            self.__pilot_controller = PilotController()
+            self.__pilot_controller = PilotController(mode=self.__mode)
             await self.__pilot_controller.init_drone()
             await self.__pilot_controller.run()
         except:
@@ -51,6 +51,7 @@ class MasterController:
             for k in key_data:
                 key.append(float(k))
         try:
+            print(key)
             self.__pilot_controller.set_key(key=key)
         except:
             print("ERROR :: pilot _controller did not maked")
