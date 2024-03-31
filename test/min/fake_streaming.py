@@ -562,7 +562,7 @@ def server_send(video_model:VideoModel):
     #         client_socket.sendall(struct.pack(">L", len(frame)) + frame)
     sock =socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
     while True:
-        frames=video_model.get_frame_bytes()
+        frames=video_model.get_frame()
         #color_frame=frames.get_color_frame()
         color_image = np.asanyarray(frames.get_data())
 
