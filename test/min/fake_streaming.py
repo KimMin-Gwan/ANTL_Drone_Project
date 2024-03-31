@@ -545,21 +545,35 @@ def server_send(video_model:VideoModel):
     port = 5001
 
 
-    # 소켓 객체 생성
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
-        # 서버와 연결
-        client_socket.connect((ip, port))
+    # # 소켓 객체 생성
+    # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+    #     # 서버와 연결
+    #     client_socket.connect((ip, port))
         
-        print("연결 성공")
+    #     print("연결 성공")
         
-        # 메시지 수신
-        while True:
-            # 프레임 읽기
-            frame = video_model.get_frame_bytes()
+    #     # 메시지 수신
+    #     while True:
+    #         # 프레임 읽기
+    #         frame = video_model.get_frame_bytes()
             
-            frame = pickle.dumps(frame)
+    #         frame = pickle.dumps(frame)
 
-            client_socket.sendall(struct.pack(">L", len(frame)) + frame)
+    #         client_socket.sendall(struct.pack(">L", len(frame)) + frame)
+    sock =socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+    while True:
+        frames=video_model.get_frame_bytes()
+        color_frame=frames.get_color_frame()
+        if not color_frame:
+            continue
+        color_image=np.asanyarray(color_frame.get_data())
+        d = color_image.flatten()
+        s = d.tostring()
+        for i in range(20):
+            sock.sendto(bytes([i]) + s[i*46080:(i+1)*46080], (ip, port))
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
 
 if __name__ == "__main__":
