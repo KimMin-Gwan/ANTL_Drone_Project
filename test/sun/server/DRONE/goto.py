@@ -10,7 +10,7 @@ from mavsdk.offboard import (Attitude, OffboardError)
 PORT =65433
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-sock.bind((HOST,PORT))
+#sock.bind((HOST,PORT))
 
 
 
