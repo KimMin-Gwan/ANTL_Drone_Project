@@ -23,7 +23,8 @@ class PilotController:
                 await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
                 await asyncio.sleep(0.1)
             elif mode_type==1:
-                await self.__drone.get_drone().action.land()  #land 함수
+                pass
+                #await self.__drone.get_drone().action.land()  #land 함수
             elif mode_type==2:
                 pass
 
