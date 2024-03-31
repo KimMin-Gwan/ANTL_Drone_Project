@@ -564,6 +564,11 @@ def server_send(video_model:VideoModel):
     while True:
         frames=video_model.get_frame_bytes()
         #color_frame=frames.get_color_frame()
+        color_image = np.asanyarray(frames.get_data())
+
+        # 프레임을 UDP 소켓으로 전송
+        d = color_image.flatten()
+        s = d.tostring()
         for i in range(20):
             sock.sendto(bytes([i]) + frames[i*46080:(i+1)*46080], (ip, port))
 
