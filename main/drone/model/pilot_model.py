@@ -24,8 +24,9 @@ class Drone:
         await self.antl_drone.action.arm()
         await asyncio.sleep(3)
         await self.antl_drone.manual_control.set_manual_control_input(
-        float(0), float(0), float(0.3), float(0)
+        float(0), float(0), float(0.5), float(0)
     )
+        await asyncio.sleep(1)
         #print("--take off")
         #await self.antl_drone.action.takeoff()
         #await asyncio.sleep(4)
