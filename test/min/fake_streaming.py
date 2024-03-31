@@ -563,10 +563,8 @@ def server_send(video_model:VideoModel):
     sock =socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
     while True:
         frames=video_model.get_frame_bytes()
-        color_frame=frames.get_color_frame()
-        if not color_frame:
-            continue
-        color_image=np.asanyarray(color_frame.get_data())
+        #color_frame=frames.get_color_frame()
+        color_image=np.asanyarray(frames)
         d = color_image.flatten()
         s = d.tostring()
         for i in range(20):
