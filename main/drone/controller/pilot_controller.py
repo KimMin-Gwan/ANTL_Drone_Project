@@ -19,7 +19,7 @@ class PilotController:
             (yaw,throttle,pitch,roll)=self.__pilot_model.get_key()
             print("----",throttle)
             if mode_type==0:
-                print(yaw,throttle,pitch,roll)
+                #print(yaw,throttle,pitch,roll)
                 await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
             elif mode_type==1:
                 pass
@@ -29,6 +29,7 @@ class PilotController:
 
 
     def set_key(self, key):
+        print(key)
         self.__pilot_model.set_key(key=key)
         return
         
