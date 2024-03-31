@@ -18,8 +18,8 @@ async def run():
     """ Does Offboard control using attitude commands. """
 
     drone = System()
-    await drone.connect(system_address="udp://:14540")
-    #await drone.connect(system_address="serial:///dev/ttyAMA0")
+    #await drone.connect(system_address="udp://:14540")
+    await drone.connect(system_address="serial:///dev/ttyAMA0")
     print("Waiting for drone to connect...")
     async for state in drone.core.connection_state():
         if state.is_connected:
@@ -48,12 +48,16 @@ async def run():
         await drone.action.disarm()
         return
     while True:
-        data,addr=sock.recvfrom(1024)
-        my_data=(data.decode().split(":"))
-        roll=(float(my_data[0]))
-        throttle=float(my_data[1])
-        yaw=(float(my_data[2]))
-        pitch=(float(my_data[3])) 
+        #data,addr=sock.recvfrom(1024)
+        #my_data=(data.decode().split(":"))
+        #roll=(float(my_data[0]))
+        #throttle=float(my_data[1])
+        #yaw=(float(my_data[2]))
+        #pitch=(float(my_data[3])) 
+        roll=0
+        throttle=0.5
+        yaw=0
+        pitch=0
         print(roll,throttle,yaw,pitch)
         await drone.offboard.set_attitude(Attitude(yaw, pitch, roll, throttle))
         await asyncio.sleep(0.01)
