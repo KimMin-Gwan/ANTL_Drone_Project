@@ -3,40 +3,36 @@ import time
 import os
 
 import socket
-spi = spidev.SpiDev()     
-spi.open(0,0)
-spi.max_speed_hz=1000000   
+HOST='165.229.185.195'
+PORT = 5001
 
-spi_2 = spidev.SpiDev()     
-spi_2.open(1,0)
-spi_2.max_speed_hz=1000000   
+def set_left_stick():
+  spi_left=spidev.SpiDev()
+  spi_left.open(0,0)
+  spi_left.max_speed_hz=1000000   
+  return spi
 
-def ReadChannel_2(channel):           
-  adc = spi_2.xfer2([1,(8+channel)<<4,0])
-  data = ((adc[1]&3) << 8) + adc[2]
-  return data
-def ReadChannel(channel):           
+def set_right_stick():
+  spi_right=spidev.SpiDev()
+  spi_right.open(1,0)
+  spi_right.max_speed_hz=1000000   
+  return spi_right
+
+def ReadChannel(channel,spi):           
   adc = spi.xfer2([1,(8+channel)<<4,0])
   data = ((adc[1]&3) << 8) + adc[2]
   return data
  
-# Define sensor channels
-# (channels 3 to 7 unused)
 
 
-# 서버 주소와 포트
-#HOST='192.168.50.71' #컴퓨터 시라파이션
-#HOST='192.168.14.144'
-HOST='165.229.185.195'
-PORT = 5001
-
-#HOST='192.168.50.232'  #라파 투 라파
-#PORT=65433
+def read():
+  spi_left=set_left_stick()
+  spi_right=set_right_stick()
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((HOST, PORT))
 swt_channel = 0  
 vrx_channel = 1  
 vry_channel = 2  
-
 swt_channel_2 = 0  
 vrx_channel_2 = 1  
 vry_channel_2 = 2  
@@ -44,18 +40,19 @@ vry_channel_2 = 2
 delay = 0.1
 degree=20
 
-sock.connect((HOST, PORT))
 
+  while True:
+    vrx_pos = ReadChannel(vrx_channel,spi_left)  
+    vry_pos =abs (ReadChannel(vry_channel,spi_left)-1022)
+    swt_val = ReadChannel(swt_channel,spi_left)  
+
+    vrx_pos_2 = ReadChannel(vrx_channel_2)  
+    vry_pos_2 = abs(ReadChannel(vry_channel_2) -1023)
+    swt_val_2 = ReadChannel(swt_channel_2)  
+ 
 while True:
 
-  vrx_pos = ReadChannel(vrx_channel)  
-  vry_pos =abs (ReadChannel(vry_channel)-1022)
-  swt_val = ReadChannel(swt_channel)  
-
-  vrx_pos_2 = ReadChannel_2(vrx_channel_2)  
-  vry_pos_2 = abs(ReadChannel_2(vry_channel_2) -1023)
-  swt_val_2 = ReadChannel_2(swt_channel_2)  
-  if(vrx_pos>=500 and vrx_pos<=510):
+    if(vrx_pos>=500 and vrx_pos<=510):
     vrx_pos=500
   elif(vrx_pos>=0 and vrx_pos < 3):
     vrx_pos=0
