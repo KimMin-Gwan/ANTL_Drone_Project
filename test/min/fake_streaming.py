@@ -254,10 +254,11 @@ class VideoModel():
 
     def get_frame_bytes(self):
         try:
-            _, buffer = cv2.imencode('.jpg', self.__frame)
+            _, buffer = cv2.imencode('.jpg', self.__frame, [cv2.IMWRITE_JPEG_QUALITY, 90])
+
             frame = buffer.tobytes()
         except:
-            _, buffer = cv2.imencode('.jpg', self.wait_img)
+            _, buffer = cv2.imencode('.jpg', self.__wait_img, [cv2.IMWRITE_JPEG_QUALITY, 90])
             frame = buffer.tobytes()
         return frame
     
@@ -540,7 +541,7 @@ import pickle # 객체의 직렬화 및 역직렬화 지원 모듈
 
 def server_send(video_model:VideoModel):
     # 서버 ip 주소 및 port 번호
-    ip = '192.168.1.3'
+    ip = '192.168.14.130'
     port = 5001
 
 
