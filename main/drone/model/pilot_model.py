@@ -15,13 +15,17 @@ class Drone:
             if state.is_connected:
                 print(f"-- Connected to drone!")
                 break
-        # Checking if Global Position Estimate is ok
+               # Checking if Global Position Estimate is ok
         #async for health in self.antl_drone.telemetry.health():
             #if health.is_global_position_ok and health.is_home_position_ok:
                 #print("-- Global position state is good enough for flying.")
                 #break
-        #print("-- Arming")
-        #await self.antl_drone.action.arm()
+        print("-- Arming")
+        await self.antl_drone.action.arm()
+        await asyncio.sleep(3)
+        await self.antl_drone.manual_control.set_manual_control_input(
+        float(0), float(0), float(0.3), float(0)
+    )
 
         
     
