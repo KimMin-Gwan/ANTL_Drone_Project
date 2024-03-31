@@ -26,7 +26,8 @@ def ReadChannel(channel):
 
 # 서버 주소와 포트
 #HOST='192.168.50.71' #컴퓨터 시라파이션
-HOST='192.168.50.227'
+#HOST='192.168.14.144'
+HOST='165.229.185.195'
 PORT = 5001
 
 #HOST='192.168.50.232'  #라파 투 라파
@@ -107,7 +108,7 @@ while True:
     mode="0"
   if (swt_val<300):
     mode="1"
-  msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "+mode
+  msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "+mode  #yaw throtle  roll pirch
 
   print(msg)
   sock.sendall(msg.encode())

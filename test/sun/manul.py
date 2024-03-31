@@ -14,14 +14,8 @@ Takeoff is used in this example to decrease complexity
 
 import asyncio
 import random
-import socket
 from mavsdk import System
-PORT =65433
 
-HOST='192.168.232.136' #컴퓨터 시뮬
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-sock.bind((HOST,PORT))
 # Test set of manual inputs. Format: [roll, pitch, throttle, yaw]
 manual_inputs = [
     [0, 0, 0.5, 0],  # no movement
@@ -40,7 +34,7 @@ async def manual_controls():
     """Main function to connect to the drone and input manual controls"""
     # Connect to the Simulation
     drone = System()
-    await drone.connect(system_address="udp://:14540")
+    await drone.connect(system_address="serial:///dev/ttyAMA0")
 
     # This waits till a mavlink based drone is connected
     print("Waiting for drone to connect...")
@@ -50,10 +44,10 @@ async def manual_controls():
             break
 
     # Checking if Global Position Estimate is ok
-    #async for health in drone.telemetry.health():
-        #if health.is_global_position_ok and health.is_home_position_ok:
-            #print("-- Global position state is good enough for flying.")
-            #break
+    async for health in drone.telemetry.health():
+        if health.is_global_position_ok and health.is_home_position_ok:
+            print("-- Global position state is good enough for flying.")
+            break
 
     # set the manual control input after arming
     await drone.manual_control.set_manual_control_input(
@@ -75,20 +69,29 @@ async def manual_controls():
     )
 
     # start manual control
-    # print("-- Starting manual control")
-    # await drone.manual_control.start_position_control()
+    print("-- Starting manual control")
+    await drone.manual_control.start_position_control()
 
     while True:
-        data,addr=sock.recvfrom(1024)
-        my_data=(data.decode().split(":"))
-        roll=(float(my_data[0]))
-        throttle=float(my_data[1])
-        yaw=(float(my_data[2]))
-        pitch=(float(my_data[3]))  
-        await drone.manual_control.set_manual_control_input(
-            pitch, yaw, throttle, roll)
+        # grabs a random input from the test list
+        # WARNING - your simulation vehicle may crash if its unlucky enough
+        input_index = random.randint(0, len(manual_inputs) - 1)
+        input_list = manual_inputs[input_index]
 
-        await asyncio.sleep(0.01)
+        # get current state of roll axis (between -1 and 1)
+        roll = float(input_list[0])
+        # get current state of pitch axis (between -1 and 1)
+        pitch = float(input_list[1])
+        # get current state of throttle axis
+        # (between -1 and 1, but between 0 and 1 is expected)
+        throttle = float(input_list[2])
+        # get current state of yaw axis (between -1 and 1)
+        yaw = float(input_list[3])
+
+        await drone.manual_control.set_manual_control_input(
+            pitch, roll, throttle, yaw)
+
+        await asyncio.sleep(0.1)
 
 
 if __name__ == "__main__":

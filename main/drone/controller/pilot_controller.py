@@ -19,9 +19,11 @@ class PilotController:
             (yaw,throttle,pitch,roll)=self.__pilot_model.get_key()
             print("----",throttle)
             if mode_type==0:
-                print(yaw,throttle,pitch,roll)
+                #print(yaw,throttle,pitch,roll)
+                if(throttle>=2.0 and throttle <=3.0):
+                    throttle=0.0
+                print("throttle : 0.0 ")
                 await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
-                await asyncio.sleep(0.1)
             elif mode_type==1:
                 pass
                 #await self.__drone.get_drone().action.land()  #land 함수

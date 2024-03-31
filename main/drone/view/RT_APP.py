@@ -28,8 +28,8 @@ class RealTimeAPI:
             
     def __data_recv(self, client_socket:Sock):
         print("recv start")
-        try:
-            while True:
+        while True:
+            try:
                 recv_data = client_socket.recv(1024)
                 decoded_data = recv_data.decode()
 
@@ -38,11 +38,9 @@ class RealTimeAPI:
                 mode_data = data[4]
 
                 self.controller.set_recv_data(key_data, mode_data)
-                
-        except Exception as e:
-            print("recv died")
-            print(e)
-        return
+            except Exception as e:
+                print("recv died")
+                print(e)
 
     def __handle_client(self, client_socket):
         try:
