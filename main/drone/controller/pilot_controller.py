@@ -20,6 +20,9 @@ class PilotController:
             print("----",throttle)
             if mode_type==0:
                 #print(yaw,throttle,pitch,roll)
+                if(throttle>=2.0 and throttle <=3.0):
+                    throttle=0.0
+                print("throttle : 0.0 ")
                 await self.__drone.get_drone().manual_control.set_manual_control_input(pitch,yaw,throttle,roll)
             elif mode_type==1:
                 pass
