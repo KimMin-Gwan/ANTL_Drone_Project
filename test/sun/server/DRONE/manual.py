@@ -50,10 +50,10 @@ async def manual_controls():
             break
 
     # Checking if Global Position Estimate is ok
-    async for health in drone.telemetry.health():
-        if health.is_global_position_ok and health.is_home_position_ok:
-            print("-- Global position state is good enough for flying.")
-            break
+    #async for health in drone.telemetry.health():
+        #if health.is_global_position_ok and health.is_home_position_ok:
+            #print("-- Global position state is good enough for flying.")
+            #break
 
     # set the manual control input after arming
     await drone.manual_control.set_manual_control_input(
