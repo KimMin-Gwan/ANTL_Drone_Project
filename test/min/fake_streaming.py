@@ -570,7 +570,7 @@ def server_send(video_model:VideoModel):
         d = color_image.flatten()
         s = d.tostring()
         for i in range(20):
-            sock.sendto(bytes([i]) + frames[i*46080:(i+1)*46080], (ip, port))
+            sock.sendto(bytes([i]) + s[i*46080:(i+1)*46080], (ip, port))
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
