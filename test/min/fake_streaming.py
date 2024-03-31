@@ -580,6 +580,7 @@ if __name__ == "__main__":
     video_model = VideoModel()
     mode_model = ModeModel()
     thread = Thread(target=server_send, args=(video_model, ))
+    thread.start()
     video_controller = VideoController(video_model=video_model)
     object_controller = ObjectController(video_model=video_model, mode=mode_model)
     video_controller.run_camera()
