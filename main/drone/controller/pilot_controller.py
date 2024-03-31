@@ -29,7 +29,6 @@ class PilotController:
 
 
     def set_key(self, key):
-        print(key)
         self.__pilot_model.set_key(key=key)
         return
         
