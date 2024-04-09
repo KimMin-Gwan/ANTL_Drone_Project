@@ -102,7 +102,9 @@ class VideoController:
         
         self.__model.set_frame2wait_image()
         raw_frame = None
+        count=0
         while True:
+            count+=1
             if self.swap_flag == REPLACEMENT:  # web에서 swap cam 버튼이 눌려 flag 0 -> 1 변경, 카메라 전환을 하겠다는 의미
                 break
             
@@ -114,11 +116,14 @@ class VideoController:
             raw_frame = np.asanyarray(color_frame.get_data())
 
             self.__model.set_raw_frame(raw_frame)
-            
             if flag:  # flag == 1로 설정 시(기본값 0) window에 카메라 화면 창 띄우기
                 # Show RGB image
                 cv2.namedWindow('RGB Camera', cv2.WINDOW_AUTOSIZE)
-                cv2.imshow('RGB Camera', self.__model.get_frame())
+                if count >=2000000000:
+                    count=2000000000
+                    cv2.imshow('RGB Camera',self.__model.get_frame())
+                else:
+                    cv2.imshow('RGB Camera', self.__model.get_raw_frame())
                 cv2.waitKey(1)
                 
                 if cv2.waitKey(1) & 0xFF == ord('q'):  # q 키 누르면 카메라 창을 종료하도록 설정 후 핸드캠으로 전환됨
