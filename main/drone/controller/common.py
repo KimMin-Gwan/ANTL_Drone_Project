@@ -105,8 +105,15 @@ class Tools:
                         ymin=np.maximum(0.0, ymin),
                         xmax=np.minimum(1.0, xmax),
                         ymax=np.minimum(1.0, ymax)))
+        filtered_objects = []
+        for i in range(top_k):
+            if scores[i] >= MIN_CONF_THRESHOLD:
+                obj = make(i)
+                if self.labels.get(obj.id) == 'person':
+                    filtered_objects.append(obj)
 
-        return [make(i) for i in range(top_k) if scores[i] >= MIN_CONF_THRESHOLD] #재귀해서 리턴시킴
+        return filtered_objects
+        #return [make(i) for i in range(top_k) if scores[i] >= MIN_CONF_THRESHOLD] #재귀해서 리턴시킴
         
 
 class ObjectFollower:
