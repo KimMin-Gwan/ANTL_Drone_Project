@@ -6,7 +6,7 @@ import threading
 from model import VideoModel
 
 #TEST_FLAG = (True, )
-TEST_FLAG = (False, )
+TEST_FLAG = (True, )
 
 OBJECT = 1
 FRONT = 2
