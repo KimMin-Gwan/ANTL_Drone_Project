@@ -109,7 +109,7 @@ class Tools:
         for i in range(top_k):
             if scores[i] >= MIN_CONF_THRESHOLD:
                 obj = make(i)
-                if self.labels.get(obj.id) == 'person':
+                if self.labels.get(obj.id) == 'car':
                     filtered_objects.append(obj)
 
         return filtered_objects
