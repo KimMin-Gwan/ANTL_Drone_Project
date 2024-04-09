@@ -119,8 +119,9 @@ class VideoController:
             if flag:  # flag == 1로 설정 시(기본값 0) window에 카메라 화면 창 띄우기
                 # Show RGB image
                 cv2.namedWindow('RGB Camera', cv2.WINDOW_AUTOSIZE)
-                if count >=2000000000:
-                    count=2000000000
+                if count >=1000000000:
+                    count=1000000000
+                    print("here")
                     cv2.imshow('RGB Camera',self.__model.get_frame())
                 else:
                     cv2.imshow('RGB Camera', self.__model.get_raw_frame())
