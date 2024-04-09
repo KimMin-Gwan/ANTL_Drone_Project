@@ -37,7 +37,6 @@ class ObjectController:
 
             start_time = time.time()            
             frame = self.__video_model.get_raw_frame()
-            print(frame[0])
             _, _, pil_im = self.image_manager.recog_image(frame)
 
             # 연산 부분
