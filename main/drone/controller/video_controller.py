@@ -118,7 +118,7 @@ class VideoController:
             if flag:  # flag == 1로 설정 시(기본값 0) window에 카메라 화면 창 띄우기
                 # Show RGB image
                 cv2.namedWindow('RGB Camera', cv2.WINDOW_AUTOSIZE)
-                cv2.imshow('RGB Camera', self.__model.get_raw_frame())
+                cv2.imshow('RGB Camera', self.__model.get_frame())
                 cv2.waitKey(1)
                 
                 if cv2.waitKey(1) & 0xFF == ord('q'):  # q 키 누르면 카메라 창을 종료하도록 설정 후 핸드캠으로 전환됨
