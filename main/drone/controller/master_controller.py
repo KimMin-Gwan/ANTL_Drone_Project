@@ -17,6 +17,7 @@ class MasterController:
 
     async def run(self):
         self.__video_controller.run_camera()
+        print("-----now start object")
         self.__object_controller.run_object_detector()
         #await self.__run_pilot()
 
