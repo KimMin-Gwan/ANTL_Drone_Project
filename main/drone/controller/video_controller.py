@@ -45,7 +45,7 @@ class VideoController:
     def run_camera(self):
         # webcam(기본값) 스레드 실행
         self.pipeline.start(self.config) #self.info.setSystemState(newSystem)
-        self.thread = threading.Thread(target=self.run_front_cam, args=(TEST_FLAG))  # True로 해둬야 테스트 과정에서 화면 확인 O (없을 시 스레드 종료 불가)
+        self.thread = threading.Thread(target=self.run_object_cam, args=(TEST_FLAG))  # True로 해둬야 테스트 과정에서 화면 확인 O (없을 시 스레드 종료 불가)
         self.thread.start()
         self.status = OBJECT # 1: front , 2: object 
         return
