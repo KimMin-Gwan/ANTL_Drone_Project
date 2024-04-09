@@ -29,9 +29,10 @@ class ObjectController:
         fps = 1
         #반복되는 핵심 와일문
         while True:
-            
+            print("start") 
             # 일시정지 상태
             if not self.__mode.get_mode():
+                print("stop")
                 continue
 
             start_time = time.time()            
