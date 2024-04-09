@@ -47,7 +47,7 @@ class VideoController:
         self.pipeline.start(self.config) #self.info.setSystemState(newSystem)
         self.thread = threading.Thread(target=self.run_front_cam, args=(TEST_FLAG))  # True로 해둬야 테스트 과정에서 화면 확인 O (없을 시 스레드 종료 불가)
         self.thread.start()
-        self.status = FRONT # 1: front , 2: object 
+        self.status = OBJECT # 1: front , 2: object 
         return
 
     # 카메라 전환 함수
