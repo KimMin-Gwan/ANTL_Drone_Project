@@ -18,7 +18,7 @@ class MasterController:
     async def run(self):
         self.__video_controller.run_camera()
         self.__object_controller.run_object_detector()
-        await self.__run_pilot()
+        #await self.__run_pilot()
 
     async def __run_pilot(self):
         try:
