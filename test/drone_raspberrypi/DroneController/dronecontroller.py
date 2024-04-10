@@ -22,20 +22,20 @@ class controller():
         #### Yaw Pitch Roll Throttle mode를 계속해서 받아서 mode에 따라서 드론 조종방식을 계속해서 바꾸어준다.
         while True:
             self.data,addr=self.sock.recvfrom(1024)
-            my_data=(self.data.decode().split(":"))
+            my_data=(self.data.decode().split(" "))
             
             self.roll=(float(my_data[0]))
             self.throttle=float(my_data[1])
             self.yaw=(float(my_data[2]))
             self.pitch=(float(my_data[3])) 
-            self.mode_type=(my_data[4])
-            if(self.mode_type=="stop"):
-                pass
-            elif(self.mode_type=="man"): #manual_mode 조종
-                print(self.throttle)
-                await self.manual_drone.manul_controls(self.pitch, self.yaw, self.throttle, self.roll)
-            elif(self.mode_type=="det"):  #detection mode 조종
-                pass
+            #self.mode_type=(my_data[4])
+            #if(self.mode_type=="stop"):
+            #    pass
+            #elif(self.mode_type=="man"): #manual_mode 조종
+            print(self.throttle)
+            await self.manual_drone.manul_controls(self.pitch, self.yaw, self.throttle, self.roll)
+            #elif(self.mode_type=="det"):  #detection mode 조종
+            #    pass
     def start_async_controll_drone(self):
         loop=asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
