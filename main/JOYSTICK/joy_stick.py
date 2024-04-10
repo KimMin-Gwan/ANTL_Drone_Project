@@ -88,4 +88,6 @@ def run():
 
     sock.sendto(msg.encode(),("165.229.185.195",5001))
     time.sleep(delay)
-  
+
+
+run()
