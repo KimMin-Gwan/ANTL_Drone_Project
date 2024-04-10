@@ -57,8 +57,8 @@ def stabil_vry_2(vry_2):
 def run():
   spi_left=set_spi(0)
   spi_right=set_spi(1)
-  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-  sock.connect((HOST, PORT))
+  sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+  #sock.connect((HOST, PORT))
   swt_channel = 0  
   vrx_channel = 1  
   vry_channel = 2  
@@ -84,8 +84,8 @@ def run():
     vry_pos_2=float((stabil_vry_2(vry_pos_2)-500)/500)
     
     mode=0
-    msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "+mode  #yaw throtle  roll pirch
+    msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "  #yaw throtle  roll pirch
 
-    sock.sendall(msg.encode())
+    sock.sendto(msg.encode(),("165.229.185.195",5001))
     time.sleep(delay)
   
