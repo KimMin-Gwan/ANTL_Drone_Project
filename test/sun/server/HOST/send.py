@@ -9,9 +9,9 @@ import sys
 
 
 
-HOST='165.229.185.195'
+#HOST='165.229.185.195'
 server_port=5001
-#HOST='192.168.50.71'
+HOST='192.168.50.71'
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.bind((HOST,server_port))
