@@ -26,8 +26,8 @@ class Main_Function():
         
     async def start_system(self):
         print("SYSTEM ALARM::System start")
-        camera_thread=Thread(target=self.camera.send_FPV)
-        camera_thread.start()
+        #camera_thread=Thread(target=self.camera.send_FPV)
+        #camera_thread.start()
         print("====")
         controll_thread= threading.Thread(target=self.drone_controller.start_async_controll_drone)
         controll_thread.start()
