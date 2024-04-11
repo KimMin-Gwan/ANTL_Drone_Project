@@ -23,7 +23,7 @@ PORT_2=65433
 sock_2=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
 
 while True:
-    data,addr=client_socket.recvfrom(1024)
+    data,addr=client_socket.recvfrom(30)
     print(data)
     sock_2.sendto(data,(HOST_2,PORT_2))
 
