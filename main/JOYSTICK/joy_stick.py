@@ -3,8 +3,6 @@ import time
 import os
 
 import socket
-HOST='165.229.185.195'
-PORT = 5001
 
 def set_spi(num):
   spi=spidev.SpiDev()
@@ -84,7 +82,7 @@ def run():
     vry_pos_2=float((stabil_vry_2(vry_pos_2)-500)/25)
     
     mode=0
-    msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "  #yaw throtle  roll pirch
+    msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2}"  #yaw throtle  roll pirch
     print(msg)
     sock.sendto(msg.encode(),("192.168.50.71",5001))
     time.sleep(delay)
