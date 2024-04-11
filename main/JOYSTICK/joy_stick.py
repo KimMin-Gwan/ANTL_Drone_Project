@@ -85,7 +85,7 @@ def run():
     
     mode=0
     msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "  #yaw throtle  roll pirch
-
+    print(msg)
     sock.sendto(msg.encode(),("192.168.50.71",5001))
     time.sleep(delay)
 
