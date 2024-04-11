@@ -78,10 +78,10 @@ def run():
     vry_pos_2 = abs(ReadChannel(vry_channel_2,spi_right) -1023)
     swt_val_2 = ReadChannel(swt_channel_2,spi_right)  
  
-    vrx_pos=float((stabil_vrx(vrx_pos)-500)/500)
+    vrx_pos=float((stabil_vrx(vrx_pos)-500)/25)
     vry_pos=float(stabil_vry(vry_pos)/1000)
-    vrx_pos_2=float((stabil_vrx_2(vrx_pos_2)-500)/500)
-    vry_pos_2=float((stabil_vry_2(vry_pos_2)-500)/500)
+    vrx_pos_2=float((stabil_vrx_2(vrx_pos_2)-500)/25)
+    vry_pos_2=float((stabil_vry_2(vry_pos_2)-500)/25)
     
     mode=0
     msg=f"{vrx_pos} {vry_pos} {vrx_pos_2} {vry_pos_2} "  #yaw throtle  roll pirch
